@@ -1,0 +1,141 @@
+/* Original work and identity assets. The desktop remains the reference-led canvas. */
+#desktop .wallpaper > img { top: 0; left: 0; right: auto; transform: none; width: 100vw; height: 100vh; max-width: none; object-fit: cover; object-position: 50% 16%; filter: blur(5px); }
+#desktop .wallpaper-wash { background: linear-gradient(110deg,#f5f1e840,#fff0 60%,#ebeced40); }
+#desktop .desktop-work { inset: 5% 4% 17%; max-width: 1320px; }
+#desktop .real-thumbnail { position:relative; display:block; width:132px; height:92px; padding:4px; border:1px solid #fff9; background:#fafafa; box-shadow:0 3px 7px #0004; transform:rotate(-3deg); border-radius:2px; }
+#desktop .real-thumbnail > img { width:100%; height:100%; object-fit:cover; object-position:top; }
+#desktop .thumb-brand { position:absolute; inset:auto -5px -6px auto; display:grid; place-items:center; width:39px; height:24px; padding:3px; background:white; box-shadow:0 1px 3px #0003; border-radius:3px; }
+.brand-logo { width:100%; height:100%; object-fit:contain; }
+.brand-wordmark { font-size:11px; font-weight:750; letter-spacing:-.5px; }
+#desktop .thumb-brand .brand-wordmark { font-size:7px; letter-spacing:-.2px; line-height:1.1; }
+#desktop .item-name { max-width:150px; font-size:11px; letter-spacing:.15px; line-height:1.3; }
+#desktop .item-abc { left:13%; top:14%; }
+#desktop .item-fab { left:27%; top:52%; }
+#desktop .item-gib { left:76%; top:31%; }
+#desktop .item-legrand { left:39%; top:8%; }
+#desktop .item-diy { left:72%; top:12%; }
+#desktop .item-indoasian { left:91%; top:29%; }
+#desktop .item-innoval { left:12%; top:47%; }
+#desktop .item-trainai { left:84%; top:57%; }
+#desktop .item-riyadh { left:50%; top:62%; }
+#desktop .item-xfactorz { left:37%; top:78%; }
+#desktop .item-amplifier { left:64%; top:84%; }
+#desktop .item-physio { left:90%; top:88%; }
+#desktop .item-index { left:9%; top:83%; }
+#desktop .item-career { left:65%; top:42%; }
+#desktop .item-about { left:42%; top:43%; }
+#desktop .item-approach { left:58%; top:14%; }
+#desktop .item-github { left:23%; top:65%; }
+#desktop .item-linkedin { left:74%; top:69%; }
+#desktop .item-contact { left:26%; top:31%; }
+#desktop .item-diy .real-thumbnail { transform:rotate(5deg); }
+#desktop .item-innoval .real-thumbnail { transform:rotate(3deg); }
+#desktop .item-riyadh .real-thumbnail { transform:rotate(-3deg); }
+#desktop .item-amplifier .real-thumbnail { transform:rotate(-5deg); }
+.dock .dock-trainai,.dock .dock-xfactorz,.dock .dock-amplifier { background:#fff; padding:5px; border:1px solid #fff9; }
+.dock .dock-amplifier { background:#f5e8de; padding:10px; }
+.window-sidebar { overflow-y:auto; }
+.window-sidebar .brand-logo { width:21px; height:18px; }
+.window-sidebar .brand-wordmark { font-size:8px; }
+.window-sidebar .sidebar-project { min-height:32px; }
+.real-project,.career-page { color:#242528; background:var(--paper,#f9f9f9); }
+.case-heading { padding:36px 40px 28px; }
+.case-brand { display:flex; align-items:center; width:140px; height:45px; margin-bottom:25px; }
+.case-brand .brand-logo { object-position:left center; }
+.case-brand .brand-wordmark { font-size:26px; letter-spacing:-1.5px; }
+.case-category { display:block; font-size:10px; text-transform:uppercase; letter-spacing:1.4px; color:#76777d; }
+.case-heading h2 { font:600 clamp(32px,4vw,48px)/1.1 'Manrope',sans-serif; letter-spacing:-2px; margin:12px 0; }
+.case-heading > p { font-size:18px; max-width:550px; line-height:1.55; color:#5c5e65; margin:0 0 28px; }
+.case-meta { display:grid; grid-template-columns:1fr 1fr; gap:20px; font-size:11px; line-height:1.6; padding-top:20px; border-top:1px solid #ddd; }
+.case-meta small { display:block; font-size:8px; letter-spacing:1px; color:#83858b; margin-bottom:3px; }
+.case-cover { margin:0 26px; height:340px; overflow:hidden; border-radius:5px; background:#eeedef; border:1px solid #00000008; }
+.case-cover img { width:100%; height:100%; object-fit:cover; object-position:top; }
+.case-story { padding:40px; display:grid; grid-template-columns:1fr 1fr; gap:35px; }
+.section-number { display:block; font-size:9px; letter-spacing:1.1px; color:#939398; margin-bottom:18px; }
+.case-story h3 { font:600 21px/1.4 'Manrope',sans-serif; letter-spacing:-.6px; margin:0 0 18px; }
+.case-story p { font-size:13px; line-height:1.85; margin:0 0 15px; color:#5d5e64; }
+.case-story .case-context { font-size:11px; color:#777a80; }
+.case-gallery { padding:0 26px; display:grid; gap:30px; }
+.case-gallery figure { margin:0; min-width:0; }
+.case-gallery a { display:block; background:#eae9e7; border-radius:5px; overflow:hidden; max-height:680px; border:1px solid #0000000b; }
+.case-gallery a:focus-visible { outline:2px solid #667bd4; outline-offset:4px; }
+.case-gallery img { width:100%; height:auto; display:block; }
+.case-gallery figure:has(img[src*="award"]) img { max-height:400px; object-fit:contain; padding:25px; }
+.case-gallery figcaption { display:flex; gap:13px; padding:12px 0 0; font-size:10px; line-height:1.5; color:#74757b; }
+.case-gallery figcaption span:first-child { color:#a0a0a5; }
+.case-gallery figcaption span:last-child { margin-left:auto; }
+.case-flow { padding:35px 40px; }
+.case-flow h3 { font-size:16px; font-weight:600; }
+.case-flow ol { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; padding:0; list-style:none; }
+.case-flow li { border-top:1px solid #d4d4d8; padding-top:12px; font-size:11px; line-height:1.6; }
+.case-flow small { display:block; color:#9b9ca2; font-size:9px; margin-bottom:12px; }
+.case-footer { padding:25px 40px; border-top:1px solid #ddd; display:flex; align-items:center; justify-content:space-between; gap:20px; font-size:11px; }
+.case-footer .text-link { font-size:12px; }
+.case-footer .text-link svg { width:16px; height:16px; }
+.finder-intro { max-width:520px; line-height:1.7; }
+.real-finder-preview { display:block; height:120px; width:100%; background:#efeded; border:1px solid #ddd; border-radius:4px; overflow:hidden; box-shadow:0 2px 6px #00000009; }
+.real-finder-preview img { width:100%; height:100%; object-fit:cover; object-position:top; transition:transform .35s; }
+.finder-file:hover .real-finder-preview img { transform:scale(1.035); }
+.finder-file[hidden] { display:none!important; }
+.finder-grid { gap:25px 20px; }
+.finder-file strong { margin-top:9px; }
+.work-filters { display:flex; gap:6px; flex-wrap:wrap; margin:24px 0; }
+.work-filters button { border:1px solid transparent; background:transparent; padding:7px 10px; border-radius:6px; font-size:10px; color:#777; cursor:pointer; }
+.work-filters button.active { background:#e8e8ec; color:#34343b; border-color:#d8d8dc; }
+.work-filters span { opacity:.5; margin-left:5px; }
+.career-link { display:flex; justify-content:space-between; width:100%; border:0; border-top:1px solid #ddd; margin-top:25px; padding:22px 0 0; background:none; text-align:left; font-size:12px; cursor:pointer; }
+.career-link span { color:#777; font-size:10px; }
+.career-page { padding:40px; }
+.career-page h2 { font:600 41px/1.12 'Manrope',sans-serif; letter-spacing:-2px; margin:15px 0 18px; }
+.career-intro { color:#777; font-size:14px; line-height:1.7; max-width:500px; }
+.career-impact { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; padding:25px 0; margin:25px 0 10px; border-top:1px solid #ddd; border-bottom:1px solid #ddd; }
+.career-impact strong { display:block; font:600 26px/1.4 'Manrope',sans-serif; letter-spacing:-1px; }
+.career-impact span { display:block; font-size:10px; line-height:1.6; color:#808089; margin-top:5px; }
+.career-timeline section { display:grid; grid-template-columns:125px 1fr; gap:20px; padding:26px 0; border-bottom:1px solid #e4e4e8; }
+.career-timeline time { font-size:10px; color:#888; padding-top:4px; }
+.career-timeline h3 { font-size:17px; margin:0 0 6px; }
+.career-timeline h4 { font-size:11px; font-weight:500; margin:0 0 12px; color:#6b6d78; }
+.career-timeline p,.career-extra p { font-size:12px; line-height:1.85; color:#72747c; margin:0; }
+.career-extra h3 { font-size:16px; margin:28px 0 13px; }
+.career-extra p+p { margin-top:14px; }
+.career-page .case-footer { margin:30px -40px -40px; }
+html[data-theme="dark"] .real-project,html[data-theme="dark"] .career-page { background:#242529; color:#eeeeef; }
+html[data-theme="dark"] .case-brand { background:white; padding:5px 10px; border-radius:4px; }
+html[data-theme="dark"] .case-heading > p,html[data-theme="dark"] .case-story p { color:#b4b5bd; }
+html[data-theme="dark"] .work-filters button.active { background:#454751; color:white; border-color:#5b5d65; }
+@media(max-width:700px) {
+  #desktop .desktop-work { inset:5% 3% 17%; }
+  #desktop .desktop-item { width:88px; }
+  #desktop .real-thumbnail { width:96px; height:68px; }
+  #desktop .item-name { font-size:9px; max-width:98px; }
+  #desktop .item-fab { left:16%; top:4%; } #desktop .item-gib { left:50%; top:4%; } #desktop .item-abc { left:83%; top:4%; }
+  #desktop .item-legrand { left:16%; top:20%; } #desktop .item-diy { left:50%; top:20%; } #desktop .item-indoasian { left:83%; top:20%; }
+  #desktop .item-innoval { left:16%; top:36%; } #desktop .item-riyadh { left:50%; top:36%; } #desktop .item-trainai { left:83%; top:36%; }
+  #desktop .item-xfactorz { left:16%; top:52%; } #desktop .item-amplifier { left:50%; top:52%; } #desktop .item-physio { left:83%; top:52%; }
+  #desktop .item-about { left:16%; top:68%; } #desktop .item-career { left:50%; top:68%; } #desktop .item-index { left:83%; top:68%; }
+  #desktop .item-contact { left:16%; top:84%; } #desktop .item-github { left:50%; top:84%; } #desktop .item-linkedin { left:83%; top:84%; }
+  #desktop .item-approach { display:none; }
+  #desktop .wallpaper > img { object-position: 50% 12%; }
+  .case-heading { padding:26px 22px; }
+  .case-heading h2 { font-size:32px; letter-spacing:-1.5px; }
+  .case-heading > p { font-size:15px; }
+  .case-meta { grid-template-columns:1fr; gap:14px; }
+  .case-cover { margin:0 14px; height:220px; }
+  .case-story { padding:25px 22px; grid-template-columns:1fr; gap:14px; }
+  .case-gallery { padding:0 14px; }
+  .case-gallery a { max-height:500px; }
+  .case-gallery figcaption { font-size:9px; }
+  .case-flow { padding:25px 22px; }
+  .case-flow ol { grid-template-columns:1fr 1fr; gap:20px; }
+  .case-footer { padding:22px; flex-wrap:wrap; }
+  .real-finder-preview { height:105px; }
+  .career-link { flex-direction:column; gap:9px; }
+  .career-page { padding:25px 22px; }
+  .career-page h2 { font-size:32px; }
+  .career-impact { gap:12px; }
+  .career-impact strong { font-size:21px; }
+  .career-impact span { font-size:9px; }
+  .career-timeline section { grid-template-columns:1fr; gap:10px; }
+  .career-page .case-footer { margin:25px -22px -25px; }
+}
+@media(prefers-reduced-motion:reduce) { .real-finder-preview img { transition:none; } }
