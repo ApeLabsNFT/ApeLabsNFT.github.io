@@ -241,7 +241,7 @@ html:fullscreen { background: #f2f0ed; }
 }
 #desktop .real-thumbnail > img {
   object-fit: cover;
-  object-position: center top;
+  object-position: center center;
   filter: saturate(1.14) contrast(1.06);
 }
 
