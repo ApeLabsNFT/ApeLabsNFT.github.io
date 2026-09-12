@@ -1,57 +1,45 @@
-import "./style.css";
 import "./desktop.css";
-import "./polish.css";
-import { osIcon } from "./os-icons";
 
-import { projects, type ProjectKey } from './projects';
-import './real-work.css';
-type Page = ProjectKey | 'work' | 'about' | 'career' | 'approach' | 'contact';
+import { projects, type ProjectKey } from "./projects";
+import { renderDesktopFiles } from "./desktop-files";
+type Page =
+  ProjectKey | "work" | "about" | "career" | "approach" | "contact" | "ideas";
 const arrow =
   '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 
 const projectKeys = Object.keys(projects) as (keyof typeof projects)[];
 const projectLogo = (key: ProjectKey) => {
   const p = projects[key];
-  return p.logo ? `<img class="brand-logo" src="${p.logo}" alt="${p.name}"/>` : `<span class="brand-wordmark">${p.name}</span>`;
+  return p.logo
+    ? `<img class="brand-logo" src="${p.logo}" alt="${p.name}"/>`
+    : `<span class="brand-wordmark">${p.name}</span>`;
 };
-const tile = (key: ProjectKey) => {
-  const p = projects[key];
-  return `<button class="desktop-item project-item item-${key}" data-open="${key}" aria-label="Open ${p.name} project"><span class="real-thumbnail"><img src="${p.cover}" alt="" loading="eager"/><span class="thumb-brand">${projectLogo(key)}</span></span><span class="item-name">${p.name}</span><span class="item-meta">${p.tag}</span></button>`;
-};
-
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
   <a class="skip-link" href="#desktop">Skip to portfolio</a>
   <main id="desktop" tabindex="-1">
     <div class="wallpaper" aria-hidden="true"><img src="/tejus-wallpaper-v2.png" alt="" fetchpriority="high"/><div class="wallpaper-wash"></div></div>
-    <h1 class="sr-only">Tejus Sharma — Enterprise AI solutions architect, Associate Director of Growth &amp; Strategy at EvolutionCo</h1>
+    <h1 class="sr-only">Tejus Sharma — Enterprise AI solutions architect, Director of Growth &amp; Strategy at EvolutionCo</h1>
     <div class="desktop-work" aria-label="Selected work and portfolio files">
 
-      ${projectKeys.map(tile).join("")}
-      <button class="desktop-item item-career" data-open="career" aria-label="Open career and CV"><span class="native-file-icon">${osIcon("contact")}</span><span class="item-name">Career & CV</span></button>
-      <button class="desktop-item item-index" data-open="work" aria-label="Open selected work"><span class="native-file-icon">${osIcon("folder")}</span><span class="item-name">Selected work</span></button>
-      <a class="desktop-item item-github" href="https://github.com/ApeLabsNFT" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile (opens in new tab)"><span class="native-file-icon">${osIcon("terminal")}</span><span class="item-name">GitHub</span></a>
-      <a class="desktop-item item-linkedin" href="https://www.linkedin.com/in/tejus-sharma-6831a232b" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile (opens in new tab)"><span class="file-icon linkedin-icon">in</span><span class="item-name">LinkedIn</span></a>
-
-      <button class="desktop-item item-about" data-open="about" aria-label="Open about Tejus"><span class="portrait-print"><img src="/tejus-portrait.jpeg" alt="Tejus Sharma in a blue suit"/><span>the human behind the work.</span></span><span class="item-name">About me</span><span class="item-meta">A little introduction</span></button>
-      <button class="desktop-item item-approach" data-open="approach" aria-label="Open my approach"><span class="native-file-icon">${osIcon("notes")}</span><span class="item-name">My approach</span><span class="item-meta">From why to what’s next</span></button>
-      <button class="desktop-item item-contact" data-open="contact" aria-label="Open contact"><span class="native-file-icon">${osIcon("mail")}</span><span class="item-name">Say hello</span><span class="item-meta">Good things start here</span></button>
+      ${renderDesktopFiles()}
     </div>
   </main>
   <nav class="dock" aria-label="Portfolio navigation">
-    <button class="dock-item dock-trainai" data-open="trainai" aria-label="TrainAI"><span class="dock-tooltip">TrainAI</span>${projectLogo("trainai")}</button>
-    <button class="dock-item dock-xfactorz" data-open="xfactorz" aria-label="Xfactorz"><span class="dock-tooltip">Xfactorz</span>${projectLogo("xfactorz")}</button>
-    <button class="dock-item dock-amplifier" data-open="amplifier" aria-label="Portfolio Amplifier"><span class="dock-tooltip">PBLSH</span><img class="brand-logo" src="/work/pblsh-mark.svg" alt="PBLSH"/></button>
+    <button class="dock-item dock-trainai product-dock" data-open="trainai" aria-label="TrainAI"><span class="dock-tooltip">TrainAI</span>${projectLogo("trainai")}</button>
+    <button class="dock-item dock-xfactorz product-dock" data-open="xfactorz" aria-label="Xfactorz"><span class="dock-tooltip">Xfactorz</span>${projectLogo("xfactorz")}</button>
+    <button class="dock-item dock-amplifier product-dock" data-open="amplifier" aria-label="PBLSH"><span class="dock-tooltip">PBLSH</span><img src="/work/pblsh-mark.svg" alt=""/></button>
+    <button class="dock-item" id="creative-break" aria-label="Take a creative break"><span class="dock-tooltip">Creative break</span><img src="/ui/warning.avif" alt=""/></button>
     <span class="dock-divider"></span>
-    <button class="dock-item dock-work" data-open="work" aria-label="Selected work"><span class="dock-tooltip">Selected work</span>${osIcon("finder")}<span class="dock-dot"></span></button>
-    <button class="dock-item dock-about" data-open="about" aria-label="About me"><span class="dock-tooltip">About me</span>${osIcon("contact")}</button>
-    <button class="dock-item dock-approach" data-open="approach" aria-label="My approach"><span class="dock-tooltip">My approach</span>${osIcon("notes")}</button>
+    <button class="dock-item dock-about" data-open="about" aria-label="About me and CV"><span class="dock-tooltip">About me & CV</span><img src="/ui/notes.avif" alt=""/></button>
+    <button class="dock-item dock-work" data-open="work" aria-label="Selected work"><span class="dock-tooltip">Selected work</span><img src="/ui/photos.avif" alt=""/></button>
     <span class="dock-divider"></span>
-    <button class="dock-item dock-contact" data-open="contact" aria-label="Get in touch"><span class="dock-tooltip">Get in touch</span>${osIcon("mail")}</button>
-    <a class="dock-item dock-linkedin" href="https://www.linkedin.com/in/tejus-sharma-6831a232b" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn (opens in new tab)"><span class="dock-tooltip">LinkedIn ↗</span><span class="linkedin-mark">in</span></a>
+    <a class="dock-item dock-linkedin" href="https://www.linkedin.com/in/tejus-sharma-6831a232b" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn (opens in new tab)"><span class="dock-tooltip">LinkedIn</span><span class="linkedin-mark">in</span></a>
+    <button class="dock-item dock-contact" data-open="contact" aria-label="Get in touch"><span class="dock-tooltip">Get in touch</span><img src="/ui/mail.avif" alt=""/></button>
     <span class="dock-divider"></span>
-    <button class="dock-item dock-theme" id="theme-toggle" aria-label="Switch to dark theme" aria-pressed="false"><span class="dock-tooltip">Change atmosphere</span>${osIcon("appearance")}</button>
+    <button class="dock-item dock-ideas" data-open="ideas" aria-label="Bin of ideas"><span class="dock-tooltip">Bin of ideas</span><img src="/ui/bin.avif" alt=""/></button>
   </nav>
-  <dialog id="portfolio-window" aria-labelledby="window-title"><div class="window-bar"><div class="window-controls"><button class="window-close" aria-label="Close window"><span>×</span></button><button class="window-minimize" aria-label="Minimize window"><span>−</span></button><button class="window-expand" aria-label="Expand window" aria-pressed="false"><span>↗</span></button></div><span id="window-title"></span><span class="window-bar-brand">ts.</span></div><div class="window-body"><nav class="window-sidebar" aria-label="Window navigation"><span class="sidebar-label">Favorites</span><button data-open="work">${osIcon("folder")}<span>Selected work</span></button><button data-open="about">${osIcon("contact")}<span>About Tejus</span></button><button data-open="approach">${osIcon("notes")}<span>My approach</span></button><button data-open="contact">${osIcon("mail")}<span>Contact</span></button><button data-open="career">${osIcon("notes")}<span>Career & CV</span></button><span class="sidebar-label">Projects</span>${projectKeys.map((key) => `<button data-open="${key}"><span class="sidebar-project-dot ${projects[key].color}"></span><span>${projects[key].name}</span></button>`).join("")}<span class="sidebar-signature">Tejus Sharma<br/><small>Personal portfolio</small></span></nav><div id="window-content"></div></div><div class="window-status"><span id="window-status-text">Portfolio</span><span>Mumbai, India</span></div></dialog>
+  <dialog id="creative-alert" aria-labelledby="creative-alert-title"><h2 id="creative-alert-title">Creative break</h2><div><img src="/ui/warning.avif" alt=""/><p>Too many tabs. Too many ideas.<br/>A good time to step back and find the right problem.</p></div><button id="dismiss-alert">Back to the work</button></dialog>
+  <dialog id="portfolio-window" aria-labelledby="window-title"><div class="window-bar"><div class="window-controls"><button class="window-close" aria-label="Close window"><span>×</span></button><button class="window-minimize" aria-label="Minimize window"><span>−</span></button><button class="window-expand" aria-label="Expand window" aria-pressed="false"><span>↗</span></button></div><span id="window-title"></span></div><div class="window-body"><nav class="window-sidebar" aria-label="About navigation"><button data-open="about">About me</button><button data-open="career">CV</button><button data-open="approach">Approach</button><button data-open="contact">Contact</button></nav><div id="window-content"></div></div><div class="window-status"><span id="window-status-text">Portfolio</span><span>Mumbai, India</span></div></dialog>
   <div class="toast" role="status" aria-live="polite"></div>
 `;
 
@@ -60,21 +48,45 @@ const external = (url: string, label: string) =>
 function renderPage(page: Page): string {
   if (page in projects) {
     const p = projects[page as keyof typeof projects];
-    return `<article class="real-project"><header class="case-heading"><div class="case-brand">${projectLogo(page as ProjectKey)}</div><span class="case-category">${p.tag}</span><h2>${p.name}</h2><p>${p.description}</p><div class="case-meta"><span><small>MY ROLE</small>${p.role}</span><span><small>CONTEXT</small>${p.status}</span></div></header><div class="case-cover"><img src="${p.cover}" alt="${p.name} project visual"/></div><div class="case-story"><section><span class="section-number">01 / THE WORK</span><h3>Connecting the business<br/>and the experience.</h3><p>${p.text}</p></section><section><span class="section-number">02 / MY CONTRIBUTION</span><p>${p.focus}</p><p class="case-context">${p.context}</p></section></div><div class="case-gallery">${p.gallery.map((g,i)=>`<figure><a href="${g.image}" target="_blank" rel="noopener noreferrer" aria-label="View full image: ${g.caption}"><img src="${g.image}" alt="${g.caption}" loading="lazy"/></a><figcaption><span>0${i+1}</span>${g.caption}<span>↗</span></figcaption></figure>`).join('')}</div><div class="case-flow"><h3>The journey</h3><ol>${p.steps.map((step,i)=>`<li><small>0${i+1}</small>${step}</li>`).join('')}</ol></div><footer class="case-footer">${p.url ? external(p.url,p.link!) : '<span>Strategy, experience & product design</span>'}<button class="back-work" data-open="work">All selected work →</button></footer></article>`;
+    const preview = p.gallery.length
+      ? `<details open class="project-preview"><summary>Preview:</summary><div class="case-gallery">${p.gallery.map((g, i) => `<figure><a href="${g.image}" target="_blank" rel="noopener noreferrer" aria-label="View full image: ${g.caption}"><img src="${g.image}" alt="${g.caption}" loading="${i === 0 ? "eager" : "lazy"}"/></a><figcaption>${g.caption}</figcaption></figure>`).join("")}</div></details>`
+      : "";
+    return `<article class="real-project"><header class="project-heading"><img src="${p.cover}" alt=""/><div><h2>${p.name}</h2><p>${p.tag}</p></div></header><div class="project-description"><p>${p.text}</p></div><details open class="project-details"><summary>Details:</summary><dl><div><dt>My role:</dt><dd>${p.role}</dd></div><div><dt>Status:</dt><dd>${p.status}</dd></div></dl></details><details class="project-details"><summary>Contribution & context:</summary><p>${p.focus}</p><p class="project-context">${p.context}</p></details>${preview}<details class="project-details"><summary>The journey:</summary><ol>${p.steps.map((step) => `<li>${step}</li>`).join("")}</ol></details><footer class="case-footer">${p.url ? external(p.url, p.link!) : ""}<button class="back-work" data-open="work">All selected work</button></footer></article>`;
   }
+  if (page === "ideas")
+    return `<article class="ideas-page"><header class="project-heading"><img src="/ui/bin.avif" alt=""/><div><h2>Bin of ideas</h2><p>0 items</p></div></header><p>The bin is empty. You can find all current projects in Selected work.</p><button class="text-link" data-open="work">Open selected work ${arrow}</button></article>`;
   if (page === "work")
-    return `<div class="finder-view"><div class="finder-path">Tejus Sharma <span>›</span> Work archive</div><h2>Selected work</h2><p class="finder-intro">Enterprise websites, award-winning product experiences, AI systems and a business of my own.</p><div class="work-filters" aria-label="Filter projects"><button class="active" aria-pressed="true" data-filter="all">All work <span>${String(projectKeys.length).padStart(2, "0")}</span></button><button data-filter="enterprise">Enterprise & UX</button><button data-filter="ai">AI products</button><button data-filter="independent">Independent</button></div><div class="finder-grid">${projectKeys.map((key) => `<button class="finder-file" data-open="${key}" data-category="${['trainai','xfactorz','amplifier'].includes(key)?'ai':key==='physio'?'independent':'enterprise'}"><span class="real-finder-preview"><img src="${projects[key].cover}" alt="" loading="lazy"/></span><strong>${projects[key].name}</strong><small>${projects[key].tag}</small></button>`).join("")}</div><div class="finder-footer">${osIcon("folder")}<span>${projectKeys.length} projects · Strategy, design & AI</span></div><button class="career-link" data-open="career">The experience behind the work <span>Career & CV ↗</span></button></div>`;
+    return `<div class="finder-view"><div class="finder-path">Tejus Sharma <span>›</span> Work archive</div><h2>Selected work</h2><p class="finder-intro">Enterprise experiences, AI products and an independent healthcare business.</p><div class="work-filters" aria-label="Filter projects"><button class="active" aria-pressed="true" data-filter="all">All work <span>${String(projectKeys.length).padStart(2, "0")}</span></button><button data-filter="enterprise">Enterprise & UX</button><button data-filter="ai">AI products</button><button data-filter="independent">Independent</button></div><div class="finder-grid">${projectKeys.map((key) => `<button class="finder-file" data-open="${key}" data-category="${["trainai", "xfactorz", "amplifier"].includes(key) ? "ai" : key === "physio" ? "independent" : "enterprise"}"><span class="real-finder-preview"><img src="${projects[key].cover}" alt="" loading="lazy"/></span><strong>${projects[key].name}</strong><small>${projects[key].tag}</small></button>`).join("")}</div><div class="finder-footer"><span>${projectKeys.length} projects · Strategy, design & AI</span></div><button class="career-link" data-open="career">The experience behind the work <span>Career & CV ↗</span></button></div>`;
   if (page === "about")
-    return `<div class="about-page"><div class="about-photo"><img src="/tejus-portrait.jpeg" alt="Tejus Sharma wearing a blue suit and amber glasses"/><span>MUMBAI, INDIA ↗</span></div><div class="page-padding"><div class="eyebrow">THE HUMAN BEHIND THE WORK</div><h2>Hi, I’m Tejus<span class="accent">.</span></h2><h3>Designer by foundation.<br/>Product thinker by instinct.<br/>Builder by practice.</h3><p>My path runs from interior design and freelance branding to Web3 product strategy, enterprise UX and AI solution architecture. I like understanding how the whole thing works—what people need, what the business needs, and what it takes to build it.</p><p>At EvolutionCo, that has meant Legrand and IndoAsian experiences, Aditya Birla Capital journeys, and products such as TrainAI, Xfactorz and PBLSH. I now lead growth and strategy for the group as Associate Director, shaping AI propositions from first discovery conversation through architecture, commercials and pilot. Beyond that, I’m a co-founder of PhysioByRutvi, working on product, brand and growth.</p><div class="about-tags"><span>Experience design</span><span>Product strategy</span><span>Enterprise AI</span></div><div class="social-links">${external("https://www.linkedin.com/in/tejus-sharma-6831a232b", "LinkedIn")}${external("https://github.com/ApeLabsNFT", "GitHub")}</div><button class="solid-button" data-open="career">Explore my career ${arrow}</button></div></div>`;
+    return `<div class="about-page"><div class="about-photo"><img src="/tejus-portrait.jpeg" alt="Tejus Sharma wearing a blue suit and amber glasses"/><span>MUMBAI, INDIA ↗</span></div><div class="page-padding"><div class="eyebrow">ABOUT ME</div><h2>Hi, I’m Tejus<span class="accent">.</span></h2><h3>Enterprise AI Solutions Architect<br/>Director — Growth & Strategy</h3><p>I lead AI productisation, growth strategy and pre-sales at EvolutionCo Group. My work connects discovery, product strategy, UX and solution architecture, taking an idea through scope, prototypes, commercial planning and pilots.</p><p>My background spans enterprise UX, banking journeys and Web3 product strategy. Alongside my work at EvolutionCo, I’m a co-founder of PhysioByRutvi, responsible for product, brand, growth and digital systems.</p><div class="about-tags"><span>Experience design</span><span>Product strategy</span><span>Enterprise AI</span></div><div class="social-links">${external("https://www.linkedin.com/in/tejus-sharma-6831a232b", "LinkedIn")}${external("https://github.com/ApeLabsNFT", "GitHub")}</div><button class="solid-button" data-open="career">View my CV ${arrow}</button></div></div>`;
   if (page === "career")
-    return `<div class="career-page"><div class="eyebrow">2020 — NOW / THE LONGER STORY</div><h2>From experiences<br/>to entire systems.</h2><p class="career-intro">UX, product strategy, enterprise pre-sales and AI architecture. A career built around making complex things useful.</p><div class="career-impact"><div><strong>30–40%</strong><span>Shorter sales cycles, by replacing static decks with live AI prototypes</span></div><div><strong>60+</strong><span>Proposals authored across 10+ industries</span></div><div><strong>2025</strong><span>India’s Best Design Award, Innovation · Legrand DIY Configurator</span></div></div><div class="career-timeline">${[
-      ['Feb 2026 — Present','EvolutionCo Group','Associate Director — Growth & Strategy','Own growth and solution strategy for the experiential-AI and immersive-technology portfolio. Architected and own TrainAI. Build vendor benchmarks, credit models and fully loaded production-cost frameworks across LLM, image, video, voice and avatar providers. Manage a three-person AI product team.'],
-      ['Feb 2025 — Feb 2026','EvolutionCo Group','Pre-Sales Team Lead','Led a team of four owning discovery, solutioning, demos and proposal strategy. Cut average sales cycles by 30–40% by replacing static decks with live functional AI prototypes, and authored 60+ proposals across 10+ industries.'],
-      ['Feb 2024 — Feb 2025','EvolutionCo Group','Pre-Sales Consultant','Owned the full pre-sales lifecycle for enterprise BFSI opportunities, influencing solution direction and pricing narratives. Ran client discovery workshops through delivery on a unified portal for a leading Bahrain bank.'],
-      ['Feb 2023 — Feb 2024','EvolutionCo Group','User Experience Designer','UX across BFSI, enterprise and consumer products: global corporate-banking journeys for a leading UAE bank, the Legrand DIY configurator, corporate payments and premium-banking modules.'],
-      ['Dec 2021 — Jan 2023','SolPatrol','Product Strategist · UX & Web3','Product and design strategy for a blockchain platform. Roadmaps, token and NFT mechanics, user journeys, usability testing and partner narratives.'],
-      ['Aug 2020 — Oct 2021','Independent / Fiverr','Branding & UX Consultant','Delivered 17+ design projects for global clients and launched two NFT projects end to end, working with founders on MVP scope and digital strategy.'],
-    ].map(([date,company,role,text])=>`<section><time>${date}</time><div><h3>${company}</h3><h4>${role}</h4><p>${text}</p></div></section>`).join('')}</div><section class="career-extra"><h3>Recent engagements</h3><p><strong>Delivered.</strong> Highland Lifespaces — full-cycle website engagement from commercials and information architecture through content and delivery, go-live approved in December 2025. Legrand Riyadh experience centre — statement of work and V2 concept handed to the client in September 2026. Legrand India — brand share-of-search and consideration index reporting. TrainAI — client brochure and enterprise demonstrations through 2026.</p><p><strong>Conversational and avatar AI.</strong> Proposal and demonstration work with private-sector banks, a general-insurance group and a life-insurance business, covering conversational banking journeys, avatar requirement definition and AI capability exploration.</p><p><strong>Experiential and phygital.</strong> A companion-AI proposition for public-sector health and social-development programmes, an industrial-instrumentation experience centre with AI-based sales training, immersive retail solutioning for a luxury retail group, a petrochemical manufacturer’s AI knowledge environment, and a judicial smart-courtroom and kiosk proposal programme.</p><p><strong>Wider solutioning.</strong> Engagements across paints and coatings, cinema and entertainment, packaging, pharmaceuticals, power and glass manufacturing, spanning product strategy, solution design and pre-sales.</p><p class="case-context">Engagements are listed at the stage they actually reached. Live proposal and pipeline work is described by sector rather than by client name. Named clients are those whose work is delivered or already public.</p></section><section class="career-extra"><h3>GCC delivery</h3><p>My Gulf exposure starts with two corporate-banking programmes — global corporate banking for a leading UAE bank, and a unified portal for a leading Bahrain-headquartered bank — both written up in the work archive. Both are under non-disclosure agreements, so the clients are not named and no screens or artefacts are published; I can talk through what the agreements permit in conversation.</p><p>Regional work continues through luxury retail, petrochemical and government programmes, and the Legrand Riyadh experience centre concept delivered in September 2026.</p></section><section class="career-extra"><h3>Other products & solution work</h3><p>Alongside the projects in this archive: <strong>AI Theatre</strong>, a real-time conversational avatar experience for cinema and enterprise engagement; <strong>CoreKultur</strong>, a subscription AI marketing engine for real-estate brokers; a <strong>public-sector smart courtroom and judicial kiosk programme</strong> covering solution architecture and bid support across multiple locations; <strong>CompanionX</strong>, a companion-AI proposition taken into public-sector health and social-development programmes; and <strong>OMIFCO’s AI manufacturing experience</strong>, connecting an interactive Metawall, Holobox advisor and collaborative table.</p><h3>Foundation & continued learning</h3><p>Bachelor’s degree in Interior Design · University of Rajasthan · 2016–2020. Further learning in AI and business through the University of Maryland, IIT Bombay and Intel; Six Sigma through Educate 360; SEO through HubSpot Academy.</p></section><div class="case-footer"><a class="text-link" href="/work/Tejus-Sharma-CV.pdf" target="_blank" rel="noopener noreferrer">Download my full CV ${arrow}</a><button class="back-work" data-open="work">Explore the work →</button></div></div>`;
+    return `<div class="career-page"><div class="eyebrow">EXPERIENCE & EDUCATION</div><h2>Career & CV</h2><p class="career-intro">Enterprise AI, product strategy, UX and solution architecture.</p><div class="career-timeline">${[
+      [
+        "2026 — Present",
+        "EvolutionCo Group",
+        "Director — Growth & Strategy",
+        "Lead group AI productisation, growth strategy and pre-sales. Own solution discovery, product requirements, UX, architecture, vendor evaluation, commercial planning and pilots. Architected TrainAI’s learning platform and shaped the Xfactorz and Portfolio Amplifier product propositions.",
+      ],
+      [
+        "Feb 2023 — Jan 2026",
+        "EvolutionCo Group",
+        "Pre-Sales Strategist & UX Designer",
+        "Progressed from UX design into pre-sales strategy and team leadership. Translated enterprise requirements into information architecture, journeys, wireframes, scopes and roadmaps across banking, configurators, learning and immersive experiences.",
+      ],
+      [
+        "Dec 2021 — Jan 2023",
+        "SolPatrol",
+        "Product Strategist / Technical Solutions Advisor",
+        "Worked on Web3 product strategy, roadmaps, user journeys, token and NFT mechanics, research and partner narratives.",
+      ],
+    ]
+      .map(
+        ([date, company, role, text]) =>
+          `<section><time>${date}</time><div><h3>${company}</h3><h4>${role}</h4><p>${text}</p></div></section>`,
+      )
+      .join(
+        "",
+      )}</div><section class="career-extra"><h3>Education</h3><p>Bachelor’s degree · University of Rajasthan · 2016–2020.</p><h3>Continued learning</h3><p>AI and business — University of Maryland (2025). Fundamentals of AI — IIT Bombay (2025). AI Aware — Intel (2025). Six Sigma — Educate 360 (2026). SEO — HubSpot Academy (2026).</p></section><div class="case-footer"><a class="text-link" href="/work/Tejus-Sharma-CV.pdf" target="_blank" rel="noopener noreferrer">Open full CV ${arrow}</a><button class="back-work" data-open="work">Explore the work →</button></div></div>`;
   if (page === "approach") {
     const steps = [
       [
@@ -118,10 +130,11 @@ const titles: Record<Page, string> = {
   innoval: "Virtual Innoval",
   riyadh: "Legrand Riyadh — Experience centre",
   physio: "PhysioByRutvi",
+  ideas: "Bin of ideas",
   career: "Career & CV",
   trainai: "TrainAI — Project overview",
   xfactorz: "Xfactorz — Project overview",
-  amplifier: "Portfolio Amplifier — Project overview",
+  amplifier: "PBLSH — Project overview",
   about: "About Tejus",
   approach: "My approach",
   contact: "Say hello",
@@ -139,7 +152,13 @@ function openPage(page: Page) {
   const restoring = minimizedPage === page;
   minimizedPage = null;
   currentPage = page;
-  document.querySelector("#window-title")!.textContent = titles[page];
+  dialog.dataset.page = page;
+  dialog.classList.toggle(
+    "notes-window",
+    ["about", "career", "approach", "contact"].includes(page),
+  );
+  document.querySelector("#window-title")!.textContent =
+    `Information about: ${page in projects ? projects[page as ProjectKey].name : titles[page]}`;
   if (!restoring) {
     windowContent.innerHTML = renderPage(page);
     windowContent.scrollTop = 0;
@@ -211,6 +230,11 @@ document.addEventListener("click", (event) => {
   );
   if (!target) return;
   const page = target.dataset.open as Page;
+  document
+    .querySelectorAll(".desktop-item.selected")
+    .forEach((el) => el.classList.remove("selected"));
+  if (target.classList.contains("desktop-item"))
+    target.classList.add("selected");
   if (currentPage === page && dialog.open) {
     dialog.focus();
     return;
@@ -226,33 +250,18 @@ type FsDoc = Document & {
   webkitFullscreenElement?: Element | null;
   webkitExitFullscreen?: () => Promise<void> | void;
 };
-type FsEl = HTMLElement & {
-  webkitRequestFullscreen?: (options?: FullscreenOptions) => Promise<void> | void;
-};
 const fsDoc = document as FsDoc;
-const fsEl = document.documentElement as FsEl;
-const isFullscreen = () =>
-  (document.fullscreenElement ?? fsDoc.webkitFullscreenElement ?? null) !== null;
-const canFullscreen = () =>
-  typeof fsEl.requestFullscreen === "function" ||
-  typeof fsEl.webkitRequestFullscreen === "function";
 
-async function enterFullscreen() {
-  try {
-    if (typeof fsEl.requestFullscreen === "function") {
-      await fsEl.requestFullscreen({ navigationUI: "hide" });
-    } else if (typeof fsEl.webkitRequestFullscreen === "function") {
-      await fsEl.webkitRequestFullscreen();
-    }
-  } catch {
-    /* iOS Safari and permission-blocked contexts fall back to the expanded layout */
-  }
-}
+const isFullscreen = () =>
+  (document.fullscreenElement ?? fsDoc.webkitFullscreenElement ?? null) !==
+  null;
 async function exitFullscreen() {
   if (!isFullscreen()) return;
   try {
-    if (typeof document.exitFullscreen === "function") await document.exitFullscreen();
-    else if (typeof fsDoc.webkitExitFullscreen === "function") await fsDoc.webkitExitFullscreen();
+    if (typeof document.exitFullscreen === "function")
+      await document.exitFullscreen();
+    else if (typeof fsDoc.webkitExitFullscreen === "function")
+      await fsDoc.webkitExitFullscreen();
   } catch {
     /* ignore */
   }
@@ -263,7 +272,7 @@ function syncExpandButton() {
   button.setAttribute("aria-pressed", String(expanded));
   button.setAttribute(
     "aria-label",
-    expanded ? "Restore window size" : "Expand window to full screen",
+    expanded ? "Restore window size" : "Expand window",
   );
 }
 async function toggleExpanded() {
@@ -272,7 +281,6 @@ async function toggleExpanded() {
     dialog.classList.remove("expanded");
   } else {
     dialog.classList.add("expanded");
-    if (canFullscreen()) await enterFullscreen();
   }
   syncExpandButton();
 }
@@ -344,14 +352,6 @@ function minimizeWindow() {
   );
 }
 
-let toastTimer: ReturnType<typeof setTimeout>;
-function toast(message: string) {
-  const el = document.querySelector<HTMLElement>(".toast")!;
-  clearTimeout(toastTimer);
-  el.textContent = message;
-  el.classList.add("visible");
-  toastTimer = setTimeout(() => el.classList.remove("visible"), 3000);
-}
 document.addEventListener("click", async (event) => {
   const copyButton = (event.target as HTMLElement).closest("#copy-email");
   if (!copyButton) return;
@@ -362,45 +362,27 @@ document.addEventListener("click", async (event) => {
     copyButton.textContent = "Select the email above to copy";
   }
 });
-const systemTheme = matchMedia("(prefers-color-scheme: dark)");
-let savedTheme: string | null = null;
-try {
-  savedTheme = localStorage.getItem("portfolio-theme");
-} catch {
-  /* System theme remains usable without storage. */
-}
-function applyTheme(dark: boolean) {
-  document.documentElement.dataset.theme = dark ? "dark" : "light";
-  document
-    .querySelector("#theme-toggle")!
-    .setAttribute(
-      "aria-label",
-      dark ? "Switch to light theme" : "Switch to dark theme",
-    );
-  document
-    .querySelector("#theme-toggle")!
-    .setAttribute("aria-pressed", String(dark));
-}
-applyTheme(savedTheme ? savedTheme === "dark" : systemTheme.matches);
-document.querySelector("#theme-toggle")!.addEventListener("click", () => {
-  const dark = document.documentElement.dataset.theme !== "dark";
-  applyTheme(dark);
-  savedTheme = dark ? "dark" : "light";
-  try {
-    localStorage.setItem("portfolio-theme", savedTheme);
-  } catch {
-    /* Theme still works for this visit. */
-  }
-  toast(dark ? "A little after-hours atmosphere." : "Back to the daylight.");
-});
-systemTheme.addEventListener("change", (event) => {
-  if (!savedTheme) applyTheme(event.matches);
+const creativeAlert =
+  document.querySelector<HTMLDialogElement>("#creative-alert")!;
+document
+  .querySelector("#creative-break")!
+  .addEventListener("click", () => creativeAlert.showModal());
+document
+  .querySelector("#dismiss-alert")!
+  .addEventListener("click", () => creativeAlert.close());
+creativeAlert.addEventListener("click", (event) => {
+  if (event.target === creativeAlert) creativeAlert.close();
 });
 syncHash();
 
 // Keep the desktop playful: drag a file, or click/tap to open it.
 let suppressDesktopClick = false;
 const files = document.querySelectorAll<HTMLElement>(".desktop-item");
+document.querySelector("#desktop")!.addEventListener("click", (event) => {
+  if (!(event.target as HTMLElement).closest(".desktop-item")) {
+    files.forEach((file) => file.classList.remove("selected"));
+  }
+});
 files.forEach((file) => {
   let drag: {
     x: number;
@@ -411,7 +393,7 @@ files.forEach((file) => {
   } | null = null;
   file.addEventListener("dragstart", (event) => event.preventDefault());
   file.addEventListener("pointerdown", (event) => {
-    if (event.button !== 0 || event.pointerType === "touch") return;
+    if (event.button !== 0) return;
     const parent = file.parentElement!.getBoundingClientRect();
     const rect = file.getBoundingClientRect();
     drag = {
@@ -462,7 +444,11 @@ document.addEventListener(
   true,
 );
 window.addEventListener("resize", () =>
-  files.forEach((file) => file.removeAttribute("style")),
+  files.forEach((file) =>
+    ["left", "top", "right", "transform"].forEach((key) =>
+      file.style.removeProperty(key),
+    ),
+  ),
 );
 
 // A proximity curve magnifies neighboring dock icons, not just the hovered icon.
@@ -482,7 +468,10 @@ dock.addEventListener("pointermove", (event) => {
     return;
   for (const item of dockItems) {
     const rect = item.getBoundingClientRect();
-    const distance = Math.abs(event.clientX - (rect.left + rect.width / 2));
+    const vertical = innerWidth < 810;
+    const distance = vertical
+      ? Math.abs(event.clientY - (rect.top + rect.height / 2))
+      : Math.abs(event.clientX - (rect.left + rect.width / 2));
     const influence = Math.max(0, 1 - distance / 110);
     item.style.setProperty(
       "--dock-scale",
@@ -533,49 +522,24 @@ window.addEventListener("resize", () => {
   resetDock();
 });
 
-// Small, eased depth movement; no perpetual animation loop or motion on touch.
-const desktopScene = document.querySelector<HTMLElement>("#desktop")!;
-let sceneX = 0,
-  sceneY = 0,
-  targetX = 0,
-  targetY = 0,
-  sceneFrame = 0;
-function animateScene() {
-  sceneX += (targetX - sceneX) * 0.065;
-  sceneY += (targetY - sceneY) * 0.065;
-  desktopScene.style.setProperty("--scene-x", `${sceneX.toFixed(2)}px`);
-  desktopScene.style.setProperty("--scene-y", `${sceneY.toFixed(2)}px`);
-  sceneFrame =
-    Math.abs(targetX - sceneX) + Math.abs(targetY - sceneY) > 0.02
-      ? requestAnimationFrame(animateScene)
-      : 0;
-}
-desktopScene.addEventListener("pointermove", (event) => {
-  if (
-    event.pointerType !== "mouse" ||
-    matchMedia("(prefers-reduced-motion: reduce)").matches
-  )
-    return;
-  targetX = (event.clientX / innerWidth - 0.5) * 9;
-  targetY = (event.clientY / innerHeight - 0.5) * 6;
-  if (!sceneFrame) sceneFrame = requestAnimationFrame(animateScene);
-});
-desktopScene.addEventListener("pointerleave", () => {
-  targetX = 0;
-  targetY = 0;
-  if (!sceneFrame) sceneFrame = requestAnimationFrame(animateScene);
-});
-
 // Work filters remain local to the archive and do not change the open project.
-document.addEventListener('click', (event) => {
-  const button = (event.target as HTMLElement).closest<HTMLButtonElement>('[data-filter]');
+document.addEventListener("click", (event) => {
+  const button = (event.target as HTMLElement).closest<HTMLButtonElement>(
+    "[data-filter]",
+  );
   if (!button) return;
-  document.querySelectorAll<HTMLButtonElement>('[data-filter]').forEach(el => {
-    const active = el === button;
-    el.classList.toggle('active', active);
-    el.setAttribute('aria-pressed', String(active));
-  });
-  document.querySelectorAll<HTMLElement>('.finder-file[data-category]').forEach(el => {
-    el.hidden = button.dataset.filter !== 'all' && el.dataset.category !== button.dataset.filter;
-  });
+  document
+    .querySelectorAll<HTMLButtonElement>("[data-filter]")
+    .forEach((el) => {
+      const active = el === button;
+      el.classList.toggle("active", active);
+      el.setAttribute("aria-pressed", String(active));
+    });
+  document
+    .querySelectorAll<HTMLElement>(".finder-file[data-category]")
+    .forEach((el) => {
+      el.hidden =
+        button.dataset.filter !== "all" &&
+        el.dataset.category !== button.dataset.filter;
+    });
 });

@@ -1,0 +1,196 @@
+{
+  "desktopFiles": [
+    {
+      "cover": "/ui/notes.avif",
+      "key": "fab",
+      "name": "Open Leading UAE Bank project"
+    },
+    {
+      "cover": "/ui/notes.avif",
+      "key": "gib",
+      "name": "Open Leading Bahrain Bank project"
+    },
+    {
+      "cover": "/work/carandbike-logo.webp",
+      "key": "carandbike",
+      "name": "Open car&bike project"
+    },
+    {
+      "cover": "/work/abc-cover.webp",
+      "key": "abc",
+      "name": "Open Aditya Birla Capital project"
+    },
+    {
+      "cover": "/work/legrand-home.webp",
+      "key": "legrand",
+      "name": "Open Legrand India project"
+    },
+    {
+      "cover": "/work/legrand-arteor.webp",
+      "key": "diy",
+      "name": "Open Legrand Configurators project"
+    },
+    {
+      "cover": "/work/indoasian-home.webp",
+      "key": "indoasian",
+      "name": "Open IndoAsian project"
+    },
+    {
+      "cover": "/work/innoval-room.webp",
+      "key": "innoval",
+      "name": "Open Virtual Innoval project"
+    },
+    {
+      "cover": "/work/legrand-riyadh-zone-a.webp",
+      "key": "riyadh",
+      "name": "Open Legrand Riyadh project"
+    },
+    {
+      "cover": "/work/trainai-learner-v2.webp",
+      "key": "trainai",
+      "name": "Open TrainAI project"
+    },
+    {
+      "cover": "/work/xfz-hardware.webp",
+      "key": "xfactorz",
+      "name": "Open Xfactorz project"
+    },
+    {
+      "cover": "/work/pblsh-hero.webp",
+      "key": "amplifier",
+      "name": "Open PBLSH project"
+    },
+    {
+      "cover": "/work/physio-hero.webp",
+      "key": "physio",
+      "name": "Open PhysioByRutvi project"
+    }
+  ],
+  "openedCases": [
+    {
+      "cover": "/ui/notes.avif",
+      "gallery": [],
+      "key": "fab",
+      "name": "Leading UAE Bank"
+    },
+    {
+      "cover": "/ui/notes.avif",
+      "gallery": [],
+      "key": "gib",
+      "name": "Leading Bahrain Bank"
+    },
+    {
+      "cover": "/work/carandbike-logo.webp",
+      "gallery": [],
+      "key": "carandbike",
+      "name": "car&bike"
+    },
+    {
+      "cover": "/work/abc-cover.webp",
+      "gallery": [
+        "/work/abc-cover.webp",
+        "/work/abc-journeys-top.webp",
+        "/work/abc-home.webp"
+      ],
+      "key": "abc",
+      "name": "Aditya Birla Capital"
+    },
+    {
+      "cover": "/work/legrand-home.webp",
+      "gallery": [
+        "/work/legrand-home.webp",
+        "/work/legrand-slide-1.webp",
+        "/work/legrand-slide-2.webp",
+        "/work/legrand-slide-3.webp",
+        "/work/legrand-slide-4.webp",
+        "/work/legrand-slide-5.webp"
+      ],
+      "key": "legrand",
+      "name": "Legrand India"
+    },
+    {
+      "cover": "/work/legrand-arteor.webp",
+      "gallery": [
+        "/work/legrand-arteor.webp",
+        "/work/legrand-configuration.webp",
+        "/work/diy-slide-1.webp",
+        "/work/diy-slide-2.webp",
+        "/work/diy-slide-3.webp",
+        "/work/legrand-award.webp"
+      ],
+      "key": "diy",
+      "name": "Legrand Configurators"
+    },
+    {
+      "cover": "/work/indoasian-home.webp",
+      "gallery": [
+        "/work/indoasian-home.webp",
+        "/work/indoasian-audience.webp"
+      ],
+      "key": "indoasian",
+      "name": "IndoAsian"
+    },
+    {
+      "cover": "/work/innoval-room.webp",
+      "gallery": [
+        "/work/innoval-room.webp",
+        "/work/innoval-slide-1.webp",
+        "/work/innoval-slide-2.webp",
+        "/work/innoval-slide-3.webp"
+      ],
+      "key": "innoval",
+      "name": "Virtual Innoval"
+    },
+    {
+      "cover": "/work/legrand-riyadh-zone-a.webp",
+      "gallery": [
+        "/work/legrand-riyadh-zone-a.webp",
+        "/work/legrand-riyadh-zone-b.webp",
+        "/work/legrand-riyadh-zone-c.webp",
+        "/work/legrand-riyadh-zone-d.webp"
+      ],
+      "key": "riyadh",
+      "name": "Legrand Riyadh"
+    },
+    {
+      "cover": "/work/trainai-learner-v2.webp",
+      "gallery": [
+        "/work/trainai-learner-v2.webp",
+        "/work/trainai-lesson.webp",
+        "/work/trainai-create.webp"
+      ],
+      "key": "trainai",
+      "name": "TrainAI"
+    },
+    {
+      "cover": "/work/xfz-hardware.webp",
+      "gallery": [
+        "/work/xfz-hardware.webp",
+        "/work/xfz-concierge.webp",
+        "/work/xfz-selfservice.webp",
+        "/work/xfz-hubs.webp",
+        "/work/xfz-heritage.webp",
+        "/work/legrand-holobox.webp",
+        "/work/legrand-avatar.webp"
+      ],
+      "key": "xfactorz",
+      "name": "Xfactorz"
+    },
+    {
+      "cover": "/work/pblsh-hero.webp",
+      "gallery": [
+        "/work/pblsh-hero.webp"
+      ],
+      "key": "amplifier",
+      "name": "PBLSH"
+    },
+    {
+      "cover": "/work/physio-hero.webp",
+      "gallery": [
+        "/work/physio-hero.webp"
+      ],
+      "key": "physio",
+      "name": "PhysioByRutvi"
+    }
+  ]
+}
