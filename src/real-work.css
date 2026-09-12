@@ -177,3 +177,51 @@ html[data-theme="dark"] .work-filters button.active { background:#454751; color:
     linear-gradient(180deg, #f2f0ed00 62%, #f2f0edd9 86%, #f2f0ed 100%);
 
 [data-theme="dark"] #desktop .item-name { color: #16181c; text-shadow: none; }
+
+/* native fullscreen: fill the screen edge to edge on every device */
+html:fullscreen #portfolio-window.expanded,
+html:-webkit-full-screen #portfolio-window.expanded {
+  top: 0 !important;
+  left: 0 !important;
+  right: 0;
+  bottom: 0;
+  width: 100vw !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+  max-width: none !important;
+  max-height: none !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+  border: 0 !important;
+  transform: none !important;
+}
+html:fullscreen #portfolio-window.expanded .window-body,
+html:-webkit-full-screen #portfolio-window.expanded .window-body {
+  flex: 1 1 auto;
+  min-height: 0;
+}
+html:fullscreen #portfolio-window::backdrop { background: #0e1116; }
+html:fullscreen { background: #f2f0ed; }
+
+/* icon interaction, following the reference: soft highlight plus a small lift */
+#desktop .desktop-item {
+  border-radius: 9px;
+  transition: transform .17s cubic-bezier(.2,.7,.3,1), background-color .17s ease;
+  will-change: transform;
+}
+#desktop .desktop-item:hover,
+#desktop .desktop-item:focus-visible {
+  background: #ffffffb8;
+  transform: translate(-50%, -50%) scale(1.07);
+  z-index: 6;
+}
+#desktop .desktop-item:active { transform: translate(-50%, -50%) scale(.97); }
+#desktop .desktop-item:hover .item-name { color: #000; }
+#desktop .desktop-item .real-thumbnail { transition: filter .17s ease; }
+#desktop .desktop-item:hover .real-thumbnail { filter: saturate(1.08); }
+@media (prefers-reduced-motion: reduce) {
+  #desktop .desktop-item { transition: background-color .17s ease; }
+  #desktop .desktop-item:hover,
+  #desktop .desktop-item:focus-visible,
+  #desktop .desktop-item:active { transform: translate(-50%, -50%); }
+}

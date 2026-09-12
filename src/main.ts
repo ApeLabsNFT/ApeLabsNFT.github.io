@@ -174,6 +174,7 @@ function openPage(page: Page) {
 function resetWindow() {
   currentPage = null;
   dialog.removeAttribute("style");
+  void exitFullscreen();
   dialog.classList.remove("expanded");
   document
     .querySelector(".window-expand")!
@@ -221,23 +222,77 @@ document.querySelector(".window-close")!.addEventListener("click", closeWindow);
 document
   .querySelector(".window-minimize")!
   .addEventListener("click", minimizeWindow);
-function toggleExpanded() {
-  const expanded = dialog.classList.toggle("expanded");
-  document
-    .querySelector(".window-expand")!
-    .setAttribute("aria-pressed", String(expanded));
-  document
-    .querySelector(".window-expand")!
-    .setAttribute(
-      "aria-label",
-      expanded ? "Restore window size" : "Expand window",
-    );
+type FsDoc = Document & {
+  webkitFullscreenElement?: Element | null;
+  webkitExitFullscreen?: () => Promise<void> | void;
+};
+type FsEl = HTMLElement & {
+  webkitRequestFullscreen?: (options?: FullscreenOptions) => Promise<void> | void;
+};
+const fsDoc = document as FsDoc;
+const fsEl = document.documentElement as FsEl;
+const isFullscreen = () =>
+  (document.fullscreenElement ?? fsDoc.webkitFullscreenElement ?? null) !== null;
+const canFullscreen = () =>
+  typeof fsEl.requestFullscreen === "function" ||
+  typeof fsEl.webkitRequestFullscreen === "function";
+
+async function enterFullscreen() {
+  try {
+    if (typeof fsEl.requestFullscreen === "function") {
+      await fsEl.requestFullscreen({ navigationUI: "hide" });
+    } else if (typeof fsEl.webkitRequestFullscreen === "function") {
+      await fsEl.webkitRequestFullscreen();
+    }
+  } catch {
+    /* iOS Safari and permission-blocked contexts fall back to the expanded layout */
+  }
 }
+async function exitFullscreen() {
+  if (!isFullscreen()) return;
+  try {
+    if (typeof document.exitFullscreen === "function") await document.exitFullscreen();
+    else if (typeof fsDoc.webkitExitFullscreen === "function") await fsDoc.webkitExitFullscreen();
+  } catch {
+    /* ignore */
+  }
+}
+function syncExpandButton() {
+  const expanded = dialog.classList.contains("expanded");
+  const button = document.querySelector(".window-expand")!;
+  button.setAttribute("aria-pressed", String(expanded));
+  button.setAttribute(
+    "aria-label",
+    expanded ? "Restore window size" : "Expand window to full screen",
+  );
+}
+async function toggleExpanded() {
+  if (dialog.classList.contains("expanded")) {
+    await exitFullscreen();
+    dialog.classList.remove("expanded");
+  } else {
+    dialog.classList.add("expanded");
+    if (canFullscreen()) await enterFullscreen();
+  }
+  syncExpandButton();
+}
+const onFullscreenChange = () => {
+  if (!isFullscreen() && dialog.classList.contains("expanded")) {
+    dialog.classList.remove("expanded");
+    syncExpandButton();
+  }
+};
+document.addEventListener("fullscreenchange", onFullscreenChange);
+document.addEventListener("webkitfullscreenchange", onFullscreenChange);
 document
   .querySelector(".window-expand")!
   .addEventListener("click", toggleExpanded);
 dialog.addEventListener("cancel", (event) => {
   event.preventDefault();
+  if (isFullscreen() || dialog.classList.contains("expanded")) {
+    void toggleExpanded();
+    return;
+  }
   closeWindow();
 });
 dialog.addEventListener("click", (event) => {
