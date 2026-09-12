@@ -1,4 +1,4 @@
-export type ProjectKey = 'fab' | 'gib' | 'abc' | 'legrand' | 'diy' | 'indoasian' | 'innoval' | 'riyadh' | 'trainai' | 'xfactorz' | 'amplifier' | 'physio';
+export type ProjectKey = 'fab' | 'gib' | 'abc' | 'carandbike' | 'legrand' | 'diy' | 'indoasian' | 'innoval' | 'riyadh' | 'trainai' | 'xfactorz' | 'amplifier' | 'physio';
 export interface Project {
   name: string; tag: string; role: string; status: string; color: string;
   description: string; text: string; focus: string; context: string;
@@ -28,6 +28,17 @@ export const projects: Record<ProjectKey, Project> = {
     context: 'Delivered with EvolutionCo across workshops and delivery cycles for a leading Bahrain-headquartered bank. The engagement is covered by a non-disclosure agreement, so the client is not named and the information architecture, wireframes and screens are not published. Happy to talk through the detail that the NDA permits in conversation.',
     cover: img('gib-cover'),
     steps: ['Enter the information', 'Validate it', 'Pass the responsibility', 'Track the status'],
+    gallery: [],
+  },
+  carandbike: {
+    name: 'car&bike', tag: 'Automotive website', color: 'red',
+    role: 'UX audit, solution scoping & design coordination', status: 'Launched · September 2025',
+    description: 'Connecting vehicle discovery, comparison and editorial exploration.',
+    text: 'A visitor arrives at an automotive site with very different intents: finding a new car, weighing up a used one, comparing variants, checking what it costs in their city, or just reading the review. The revamp was not a homepage refresh. It was working out how those journeys relate, and making the page types and requirements concrete enough for a coordinated design workstream.',
+    focus: 'Website audit insights, proposal and scope-of-work development, page-type inventory and mapping across discovery, product, comparison, city pricing, editorial, used-vehicle and enquiry journeys, and coordination with the wider UX/UI team.',
+    context: 'Delivered with EvolutionCo for Mahindra’s car&bike as part of a cross-functional team. The client confirmed the launch in September 2025 and credited the team; the visual design and build were collaborative, and this case makes no claim of sole ownership or of measured post-launch uplift. Final design frames are still to be exported, so the card below is brand-only rather than a screen I cannot yet verify as the shipped redesign.',
+    cover: img('carandbike-cover'), logo: img('carandbike-logo'), url: 'https://www.carandbike.com/', link: 'Visit car&bike',
+    steps: ['Discover a vehicle', 'Compare the options', 'Check local pricing', 'Read and decide'],
     gallery: [],
   },
   abc: {

@@ -110,6 +110,7 @@ const titles: Record<Page, string> = {
   work: "Selected work",
   fab: "Leading UAE Bank",
   gib: "Leading Bahrain Bank",
+  carandbike: "car&bike",
   abc: "Aditya Birla Capital",
   legrand: "Legrand India",
   diy: "Legrand Configurators",
