@@ -11,24 +11,26 @@
 #desktop .item-name { max-width:150px; font-size:11px; letter-spacing:.15px; line-height:1.3; }
 #desktop .item-fab { left:10%; top:10%; }
 #desktop .item-gib { left:30%; top:8%; }
-#desktop .item-abc { left:50%; top:11%; }
-#desktop .item-carandbike { left:70%; top:9%; }
-#desktop .item-legrand { left:90%; top:12%; }
-#desktop .item-diy { left:10%; top:32%; }
-#desktop .item-indoasian { left:30%; top:30%; }
-#desktop .item-innoval { left:50%; top:33%; }
-#desktop .item-riyadh { left:70%; top:31%; }
-#desktop .item-trainai { left:90%; top:34%; }
-#desktop .item-xfactorz { left:10%; top:54%; }
-#desktop .item-amplifier { left:30%; top:52%; }
-#desktop .item-physio { left:50%; top:55%; }
-#desktop .item-index { left:70%; top:53%; }
-#desktop .item-about { left:90%; top:56%; }
-#desktop .item-career { left:10%; top:76%; }
-#desktop .item-approach { left:30%; top:74%; }
-#desktop .item-contact { left:50%; top:77%; }
-#desktop .item-github { left:70%; top:75%; }
-#desktop .item-linkedin { left:90%; top:78%; }
+#desktop .item-abc { left:25%; top:13%; }
+#desktop .item-legrand { left:41%; top:10%; }
+#desktop .item-diy { left:57%; top:13%; }
+#desktop .item-carandbike { left:72%; top:16%; }
+#desktop .item-gib { left:16%; top:30%; }
+#desktop .item-indoasian { left:32%; top:32%; }
+#desktop .item-innoval { left:48%; top:29%; }
+#desktop .item-riyadh { left:63%; top:32%; }
+#desktop .item-trainai { left:78%; top:29%; }
+#desktop .item-fab { left:21%; top:49%; }
+#desktop .item-xfactorz { left:37%; top:51%; }
+#desktop .item-about { left:53%; top:48%; }
+#desktop .item-amplifier { left:68%; top:51%; }
+#desktop .item-physio { left:81%; top:48%; }
+#desktop .item-index { left:28%; top:68%; }
+#desktop .item-career { left:44%; top:66%; }
+#desktop .item-contact { left:58%; top:68%; }
+#desktop .item-approach { left:72%; top:66%; }
+#desktop .item-github { left:37%; top:82%; }
+#desktop .item-linkedin { left:57%; top:82%; }
 #desktop .item-diy .real-thumbnail { transform:rotate(5deg); }
 #desktop .item-innoval .real-thumbnail { transform:rotate(3deg); }
 #desktop .item-riyadh .real-thumbnail { transform:rotate(-3deg); }
@@ -143,3 +145,35 @@ html[data-theme="dark"] .work-filters button.active { background:#454751; color:
   .career-page .case-footer { margin:25px -22px -25px; }
 }
 @media(prefers-reduced-motion:reduce) { .real-finder-preview img { transition:none; } }
+
+/* ============================================================
+   Reference-led desktop composition (visual reference: bychudy.com).
+   Ghosted wallpaper, chrome-free icons, tight central cluster.
+   No reference-site code or assets are used.
+   ============================================================ */
+
+#desktop .wallpaper { background: #f2f0ed; }
+#desktop .wallpaper > img {
+  top: -2vh; left: 50%; right: auto;
+  transform: translateX(-50%);
+  width: auto; height: 102vh; max-width: none;
+  object-fit: contain; object-position: 50% 0;
+  filter: blur(13px) saturate(0.4) contrast(0.8) brightness(1.14);
+  opacity: 0.6;
+}
+#desktop .wallpaper-wash {
+  background:
+    radial-gradient(46% 44% at 50% 40%, #f2f0ed00 0%, #f2f0ed00 52%, #f2f0edcc 84%, #f2f0ed 100%),
+    linear-gradient(180deg, #f2f0ed00 62%, #f2f0edd9 86%, #f2f0ed 100%);
+}
+[data-theme="dark"] #desktop .wallpaper { background: #f2f0ed; }
+[data-theme="dark"] #desktop .wallpaper > img {
+  filter: blur(13px) saturate(0.4) contrast(0.8) brightness(1.14);
+  opacity: 0.6;
+}
+[data-theme="dark"] #desktop .wallpaper-wash {
+  background:
+    radial-gradient(46% 44% at 50% 40%, #f2f0ed00 0%, #f2f0ed00 52%, #f2f0edcc 84%, #f2f0ed 100%),
+    linear-gradient(180deg, #f2f0ed00 62%, #f2f0edd9 86%, #f2f0ed 100%);
+
+[data-theme="dark"] #desktop .item-name { color: #16181c; text-shadow: none; }
