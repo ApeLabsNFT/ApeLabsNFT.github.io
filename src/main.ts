@@ -2,12 +2,19 @@ import "./desktop.css";
 
 import { projects, type ProjectKey } from "./projects";
 import { renderDesktopFiles } from "./desktop-files";
+import {
+  projectOrder,
+  featuredProjects,
+  outcomes,
+  coverCaption,
+  teamContribution,
+} from "./visual-system";
 type Page =
   ProjectKey | "work" | "about" | "career" | "approach" | "contact" | "ideas";
 const arrow =
   '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 
-const projectKeys = Object.keys(projects) as (keyof typeof projects)[];
+const projectKeys = projectOrder;
 const projectLogo = (key: ProjectKey) => {
   const p = projects[key];
   return p.logo
@@ -18,7 +25,7 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
   <a class="skip-link" href="#desktop">Skip to portfolio</a>
   <main id="desktop" tabindex="-1">
     <div class="wallpaper" aria-hidden="true"><img src="/tejus-wallpaper-v2.png" alt="" fetchpriority="high"/><div class="wallpaper-wash"></div></div>
-    <h1 class="sr-only">Tejus Sharma — Enterprise AI solutions architect, Director of Growth &amp; Strategy at EvolutionCo</h1>
+    <header class="desktop-identity"><h1>Tejus Sharma</h1><p>Director Of Growth · EvolutionCo</p><span>Enterprise AI, product strategy & experience design</span><div><button data-open="work">Selected work ↗</button><button data-open="contact">Get in touch ↗</button></div></header>
     <div class="desktop-work" aria-label="Selected work and portfolio files">
 
       ${renderDesktopFiles()}
@@ -48,30 +55,31 @@ const external = (url: string, label: string) =>
 function renderPage(page: Page): string {
   if (page in projects) {
     const p = projects[page as keyof typeof projects];
+    const key = page as ProjectKey;
     const preview = p.gallery.length
-      ? `<details open class="project-preview"><summary>Preview:</summary><div class="case-gallery">${p.gallery.map((g, i) => `<figure><a href="${g.image}" target="_blank" rel="noopener noreferrer" aria-label="View full image: ${g.caption}"><img src="${g.image}" alt="${g.caption}" loading="${i === 0 ? "eager" : "lazy"}"/></a><figcaption>${g.caption}</figcaption></figure>`).join("")}</div></details>`
+      ? `<section class="case-evidence"><h3>Product & process evidence</h3><div class="case-gallery">${p.gallery.map((g) => `<figure><a href="${g.image}" target="_blank" rel="noopener noreferrer" aria-label="View full image: ${g.caption}"><img src="${g.image}" alt="${g.caption}" loading="lazy"/></a><figcaption>${g.caption}</figcaption></figure>`).join("")}</div></section>`
       : "";
-    return `<article class="real-project"><header class="project-heading"><img src="${p.cover}" alt=""/><div><h2>${p.name}</h2><p>${p.tag}</p></div></header><div class="project-description"><p>${p.text}</p></div><details open class="project-details"><summary>Details:</summary><dl><div><dt>My role:</dt><dd>${p.role}</dd></div><div><dt>Status:</dt><dd>${p.status}</dd></div></dl></details><details class="project-details"><summary>Contribution & context:</summary><p>${p.focus}</p><p class="project-context">${p.context}</p></details>${preview}<details class="project-details"><summary>The journey:</summary><ol>${p.steps.map((step) => `<li>${step}</li>`).join("")}</ol></details><footer class="case-footer">${p.url ? external(p.url, p.link!) : ""}<button class="back-work" data-open="work">All selected work</button></footer></article>`;
+    return `<article class="real-project"><header class="case-title"><p>${p.tag}</p><h2>${p.name}</h2><span>${p.description}</span></header><div class="outcome-strip"><span>${outcomes[key]}</span>${p.url ? external(p.url, p.link!) : ""}</div><figure class="case-cover"><figcaption>${coverCaption(key)}</figcaption><a href="${p.cover}" target="_blank" rel="noopener noreferrer" aria-label="View ${p.name} cover"><img src="${p.cover}" alt="${p.name} · ${coverCaption(key)}"/></a></figure><section class="case-section"><h3>Project overview</h3><p>${p.text}</p></section><section class="case-section contribution-grid"><div><h3>My contribution</h3><strong>${p.role}</strong><p>${p.focus}</p></div><div><h3>The wider team</h3><p>${teamContribution(key)}</p></div></section><section class="case-section"><h3>Scope & outcome</h3><p>${p.context}</p><p class="case-stage">${p.status}</p></section><section class="case-section"><h3>The journey</h3><ol class="journey-strip">${p.steps.map((step) => `<li>${step}</li>`).join("")}</ol></section>${preview}<footer class="case-footer"><button class="back-work" data-open="work">← All selected work</button><button class="text-link" data-open="contact">Discuss this project ${arrow}</button></footer></article>`;
   }
   if (page === "ideas")
     return `<article class="ideas-page"><header class="project-heading"><img src="/ui/bin.avif" alt=""/><div><h2>Bin of ideas</h2><p>0 items</p></div></header><p>The bin is empty. You can find all current projects in Selected work.</p><button class="text-link" data-open="work">Open selected work ${arrow}</button></article>`;
   if (page === "work")
-    return `<div class="finder-view"><div class="finder-path">Tejus Sharma <span>›</span> Work archive</div><h2>Selected work</h2><p class="finder-intro">Enterprise experiences, AI products and an independent healthcare business.</p><div class="work-filters" aria-label="Filter projects"><button class="active" aria-pressed="true" data-filter="all">All work <span>${String(projectKeys.length).padStart(2, "0")}</span></button><button data-filter="enterprise">Enterprise & UX</button><button data-filter="ai">AI products</button><button data-filter="independent">Independent</button></div><div class="finder-grid">${projectKeys.map((key) => `<button class="finder-file" data-open="${key}" data-category="${["trainai", "xfactorz", "amplifier"].includes(key) ? "ai" : key === "physio" ? "independent" : "enterprise"}"><span class="real-finder-preview"><img src="${projects[key].cover}" alt="" loading="lazy"/></span><strong>${projects[key].name}</strong><small>${projects[key].tag}</small></button>`).join("")}</div><div class="finder-footer"><span>${projectKeys.length} projects · Strategy, design & AI</span></div><button class="career-link" data-open="career">The experience behind the work <span>Career & CV ↗</span></button></div>`;
+    return `<div class="finder-view"><div class="finder-path">Tejus Sharma <span>›</span> Work archive</div><h2>Selected work</h2><p class="finder-intro">Start with enterprise AI, banking and product configuration. Explore the wider portfolio below.</p><div class="work-filters" aria-label="Filter projects"><button class="active" aria-pressed="true" data-filter="all">All work <span>13</span></button><button data-filter="featured">Start here</button><button data-filter="enterprise">Enterprise & UX</button><button data-filter="ai">AI products</button><button data-filter="independent">Independent</button></div><div class="finder-grid">${projectKeys.map((key) => `<button class="finder-file ${featuredProjects.includes(key) ? "featured-file" : ""}" data-open="${key}" data-featured="${featuredProjects.includes(key)}" data-category="${["trainai", "xfactorz", "amplifier"].includes(key) ? "ai" : key === "physio" ? "independent" : "enterprise"}"><span class="real-finder-preview"><img src="${projects[key].cover}" alt="" loading="lazy"/></span><span class="file-kicker">${featuredProjects.includes(key) ? "START HERE · " : ""}${outcomes[key]}</span><strong>${projects[key].name}</strong><small>${projects[key].tag}${key === "fab" || key === "gib" ? " · Illustrative reconstruction" : key === "riyadh" ? " · Concept visual" : ""}</small></button>`).join("")}</div><div class="finder-footer"><span>13 projects · Strategy, design & AI</span><a href="/work/image-manifest.json" target="_blank" rel="noopener noreferrer">Image manifest ↗</a></div><button class="career-link" data-open="career">The experience behind the work <span>Career & CV ↗</span></button></div>`;
   if (page === "about")
-    return `<div class="about-page"><div class="about-photo"><img src="/tejus-portrait.jpeg" alt="Tejus Sharma wearing a blue suit and amber glasses"/><span>MUMBAI, INDIA ↗</span></div><div class="page-padding"><div class="eyebrow">ABOUT ME</div><h2>Hi, I’m Tejus<span class="accent">.</span></h2><h3>Enterprise AI Solutions Architect<br/>Director — Growth & Strategy</h3><p>I lead AI productisation, growth strategy and pre-sales at EvolutionCo Group. My work connects discovery, product strategy, UX and solution architecture, taking an idea through scope, prototypes, commercial planning and pilots.</p><p>My background spans enterprise UX, banking journeys and Web3 product strategy. Alongside my work at EvolutionCo, I’m a co-founder of PhysioByRutvi, responsible for product, brand, growth and digital systems.</p><div class="about-tags"><span>Experience design</span><span>Product strategy</span><span>Enterprise AI</span></div><div class="social-links">${external("https://www.linkedin.com/in/tejus-sharma-6831a232b", "LinkedIn")}${external("https://github.com/ApeLabsNFT", "GitHub")}</div><button class="solid-button" data-open="career">View my CV ${arrow}</button></div></div>`;
+    return `<div class="about-page"><div class="about-photo"><img src="/tejus-portrait.jpeg" alt="Tejus Sharma wearing a blue suit and amber glasses"/><span>MUMBAI, INDIA ↗</span></div><div class="page-padding"><div class="eyebrow">ABOUT ME</div><h2>Hi, I’m Tejus<span class="accent">.</span></h2><h3>Director Of Growth<br/>Enterprise AI & Product Strategy</h3><p>I lead AI productisation, growth strategy and pre-sales at EvolutionCo Group. My work connects discovery, product strategy, UX and solution architecture, taking an idea through scope, prototypes, commercial planning and pilots.</p><p>My background spans enterprise UX, banking journeys and Web3 product strategy. Alongside my work at EvolutionCo, I’m a co-founder of PhysioByRutvi, responsible for product, brand, growth and digital systems.</p><div class="about-tags"><span>Experience design</span><span>Product strategy</span><span>Enterprise AI</span></div><div class="social-links">${external("https://www.linkedin.com/in/tejus-sharma-6831a232b", "LinkedIn")}${external("https://github.com/ApeLabsNFT", "GitHub")}</div><button class="solid-button" data-open="career">View my CV ${arrow}</button></div></div>`;
   if (page === "career")
     return `<div class="career-page"><div class="eyebrow">EXPERIENCE & EDUCATION</div><h2>Career & CV</h2><p class="career-intro">Enterprise AI, product strategy, UX and solution architecture.</p><div class="career-timeline">${[
       [
         "2026 — Present",
         "EvolutionCo Group",
-        "Director — Growth & Strategy",
+        "Director Of Growth",
         "Lead group AI productisation, growth strategy and pre-sales. Own solution discovery, product requirements, UX, architecture, vendor evaluation, commercial planning and pilots. Architected TrainAI’s learning platform and shaped the Xfactorz and Portfolio Amplifier product propositions.",
       ],
       [
         "Feb 2023 — Jan 2026",
         "EvolutionCo Group",
         "Pre-Sales Strategist & UX Designer",
-        "Progressed from UX design into pre-sales strategy and team leadership. Translated enterprise requirements into information architecture, journeys, wireframes, scopes and roadmaps across banking, configurators, learning and immersive experiences.",
+        "UX Designer (2023–2024) → Pre-Sales Strategist & UX Designer (2024–2025) → Pre-Sales Lead (2025–2026). Translated enterprise requirements into information architecture, journeys, wireframes, scopes and roadmaps across banking, configurators, learning and immersive experiences.",
       ],
       [
         "Dec 2021 — Jan 2023",
@@ -540,6 +548,26 @@ document.addEventListener("click", (event) => {
     .forEach((el) => {
       el.hidden =
         button.dataset.filter !== "all" &&
-        el.dataset.category !== button.dataset.filter;
+        (button.dataset.filter === "featured"
+          ? el.dataset.featured !== "true"
+          : el.dataset.category !== button.dataset.filter);
     });
+});
+
+dialog.addEventListener("keydown", (event) => {
+  if (event.key !== "Tab") return;
+  const nodes = [
+    ...dialog.querySelectorAll<HTMLElement>(
+      'button, a[href], summary, [tabindex="0"]',
+    ),
+  ].filter((el) => el.getClientRects().length > 0);
+  const first = nodes[0],
+    last = nodes[nodes.length - 1];
+  if (event.shiftKey && document.activeElement === first) {
+    event.preventDefault();
+    last?.focus();
+  } else if (!event.shiftKey && document.activeElement === last) {
+    event.preventDefault();
+    first?.focus();
+  }
 });

@@ -1,38 +1,33 @@
 # Tejus Sharma — Personal portfolio
 
-A TypeScript/Vite portfolio matching the photo desktop, floating project files, compact information windows, and glass dock of https://www.bychudy.com/. Tejus's portrait, project narratives, contact details, and CV are retained.
+A TypeScript/Vite portfolio inspired by the photo desktop, scattered project files and glass dock at https://www.bychudy.com/. The September 2026 update adds larger product covers, visible identity, prioritised work and readable case-study windows, following the user's latest feedback.
 
-## Run
+## Run and build
 
 ```sh
 npm ci
-npm run dev -- --port 4173
-```
-
-## Build and publish
-
-```sh
+npm run dev -- --port 4174
 npm run build
 npm run preview
 ```
 
-The static build is written to `dist`. The existing GitHub Pages workflow publishes it when changes are pushed to `main`. Local work does not update the live site until that publication happens.
+The existing GitHub Pages workflow builds `dist` and publishes on pushes to `main` at https://apelabsnft.github.io/.
 
-## Structure
+## Content and assets
 
-- `src/desktop.css` is the single active stylesheet. Conflicting earlier style layers have been removed.
-- `src/desktop-files.ts` defines one desktop file for each of the 13 projects. Gallery images remain inside their matching case studies. Desktop and mobile anchors follow the reference composition.
-- `src/main.ts` renders the desktop, project inspector, work archive, About/CV/Approach/Contact pages, ideas bin, and window interactions.
-- `src/projects.ts` maps each project name to its own content and verified image set. Confidential banking cases have no published screens; Riyadh previews are identified as concepts. About and Career follow the included CV, with unsupported metrics removed.
-- `public/tejus-wallpaper-v2.png` is the existing AI-edited portrait derivative. The source photograph `public/tejus-portrait.jpeg` is unchanged.
-- `public/work/Tejus-Sharma-CV.pdf` is the existing full CV.
-- `public/ui/ASSETS.md` records interface asset and font sources. Images and fonts are local; the app has no external font or image requests.
-- `qa/` contains source captures, implementation captures, combined comparisons, and route checks. `design-qa.md` records the review.
+- `src/projects.ts`: the 13 project names, narratives, roles, sources and galleries.
+- `src/visual-system.ts`: featured order, outcome strips, cover disclosures and team contribution copy.
+- `src/desktop-files.ts`: one desktop file per project, with responsive anchors and larger featured covers.
+- `src/main.ts`: case studies, archive, About, career, contact and window interactions.
+- `src/desktop.css`: desktop composition, portrait visibility/blur, responsive windows and accessibility styles.
+- `public/work/covers/`: supplied product presentation visuals, optimised to WebP without changing their content.
+- `public/work/image-manifest.json`: exact cover-to-project mapping and car&bike capture sources. The clean IndoAsian image is used, excluding the duplicate with a Windows activation watermark.
+- `public/work/Tejus-Sharma-CV.pdf`: existing CV with the two title references updated to the user's confirmed **Director Of Growth**.
+- `public/social-preview.png`, `robots.txt`, `sitemap.xml` and metadata in `index.html`: social and search presentation.
+- `qa/final-*` and `design-qa.md`: current review evidence. Earlier captures remain historical comparisons.
+
+Bank covers are illustrative reconstructions with fictional data; client interfaces are not published. Banking schematics are labelled illustrations. Riyadh is a concept, not a built installation. PBLSH uses supplied presentation and public website artwork; verified production workflow screenshots were not available. Public car&bike captures provide current website context, not attribution of every current element to Tejus. Metrics and testimonials without publication-cleared sources were not added.
 
 ## Behavior
 
-Project files open on click/tap and can be dragged. The red control or Escape closes a window; yellow minimizes; the corresponding dock item restores it. The green control expands the window inside the page. Windows can be dragged by the title bar on desktop, and double-clicking it expands/restores them. Hash URLs support direct project access and browser history. The work archive filters by category. Project sections collapse and expand. Gallery images link to their original local image files. Contact provides a mail link, copy-email action, social links, and the CV.
-
-Desktop uses 60px thumbnails with white SF Pro labels and a 573px-wide dock 50px from the bottom. Mobile moves the dock to the left, uses shorter display labels with full accessible names, and keeps project windows within the screen. At 390 × 844 the dock is 61 × 604.25px, matching the measured source. Reduced-motion preferences disable decorative motion.
-
-The source's closely scattered/overlapping composition is intentional. Its mobile project viewer sometimes extended off-screen; this version keeps the close control and window in view. Source-specific Adobe jokes are adapted into a creative-break dialog; project/product branding and the LinkedIn link remain personal to Tejus.
+The portrait starts clear, settles to a light blur and blurs further when a window opens. Project files open on click/tap and support dragging. Red or Escape closes; yellow minimises; the dock restores; green expands/restores. Desktop title bars support dragging and double-click expansion. Hash routes support direct access and browser history. Archive filters include featured work, enterprise UX, AI and independent work. Case-study sections and image evidence are open by default. Keyboard focus loops within the open window and returns on close. Reduced-motion preferences disable decorative animation.

@@ -499,3 +499,52 @@ export const projects: Record<ProjectKey, Project> = {
     ],
   },
 };
+
+// User-supplied cover system; original product evidence remains in each gallery.
+for (const key of Object.keys(projects) as ProjectKey[])
+  projects[key].cover = `/work/covers/${key}.webp`;
+projects.fab.context =
+  "Confidential enterprise UX with EvolutionCo. The cover is an illustrative reconstruction with fictional information, not the bank’s interface or data. Original client screens are not published.";
+projects.gib.context =
+  "Confidential portal work with EvolutionCo. The cover is an illustrative reconstruction with fictional information, not the bank’s interface or data. Original client screens are not published.";
+projects.fab.gallery = [
+  {
+    image: "/work/fab-cover.webp",
+    caption:
+      "Illustrative schematic · maker, checker, authoriser and exception states; not a client artefact",
+  },
+];
+projects.gib.gallery = [
+  {
+    image: "/work/gib-cover.webp",
+    caption:
+      "Illustrative schematic · portal functions; not the client’s information architecture",
+  },
+];
+projects.carandbike.context =
+  "UX audit, journey scoping and design coordination with EvolutionCo. Public captures below show the website as accessed in September 2026; they are context for the collaborative project, not a claim that every current element was designed by me.";
+projects.carandbike.gallery = [
+  {
+    image: "/work/carandbike-public-home.png",
+    caption: "Public website capture · homepage · September 2026",
+  },
+  {
+    image: "/work/carandbike-discovery.png",
+    caption: "Public website capture · vehicle discovery · September 2026",
+  },
+  {
+    image: "/work/carandbike-detail.png",
+    caption: "Public website capture · vehicle detail · September 2026",
+  },
+  {
+    image: "/work/carandbike-comparison.png",
+    caption: "Public website capture · vehicle comparison · September 2026",
+  },
+];
+projects.amplifier.context =
+  "Portfolio Amplifier is branded PBLSH. The cover is a supplied presentation mockup; the gallery shows public website artwork. These visuals describe the product proposition and do not document a verified production workflow.";
+projects.trainai.gallery.push({
+  image: "/work/trainai-architecture.svg",
+  caption:
+    "TrainAI · high-level architecture summary, based on the documented product scope",
+});

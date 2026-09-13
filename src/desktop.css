@@ -119,14 +119,16 @@ button:disabled {
 }
 .wallpaper > img {
   position: absolute;
-  width: max(100vw, 112vh);
-  height: auto;
+  width: auto;
+  height: 125dvh;
   max-width: none;
   left: 50%;
-  top: -5vh;
-  transform: translateX(-50%) scale(1.35);
+  top: -2dvh;
+  transform: translateX(-50%);
   transform-origin: 50% 0;
-  filter: blur(5px);
+  filter: blur(1.5px);
+  transition: filter 0.8s ease;
+  animation: portrait-settle 2.2s ease 0.7s both;
   pointer-events: none;
 }
 .wallpaper-wash {
@@ -986,11 +988,11 @@ summary::marker {
 @media (max-width: 809px) {
   .wallpaper > img {
     width: auto;
-    height: 145dvh;
-    left: 48%;
-    top: 5dvh;
+    height: 112dvh;
+    left: 50%;
+    top: 8dvh;
     transform: translateX(-50%);
-    filter: blur(5px);
+    filter: blur(1.25px);
   }
   .desktop-item {
     left: var(--mx);
@@ -1255,4 +1257,397 @@ summary::marker {
 .notes-window .approach-page h2,
 .notes-window .contact-page h2 {
   font-size: 14px;
+}
+
+/* Evidence-first refinement of the reference desktop. */
+@keyframes portrait-settle {
+  from {
+    filter: blur(0);
+  }
+  to {
+    filter: blur(1.5px);
+  }
+}
+.window-open .wallpaper > img {
+  animation: none;
+  filter: blur(7px);
+}
+.desktop-identity {
+  position: absolute;
+  z-index: 5;
+  left: 28px;
+  top: 23px;
+  max-width: 350px;
+  color: #242424;
+}
+.desktop-identity h1 {
+  font-size: 21px;
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+}
+.desktop-identity p {
+  margin-top: 5px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.desktop-identity > span {
+  display: block;
+  margin-top: 4px;
+  font-size: 11px;
+}
+.desktop-identity > div {
+  display: flex;
+  gap: 16px;
+  margin-top: 9px;
+}
+.desktop-identity button {
+  padding: 3px 0;
+  font-size: 11px;
+  border-bottom: 1px solid #7777;
+}
+.real-thumbnail {
+  overflow: hidden;
+  border-radius: 5px;
+  box-shadow: 0 4px 16px #0002;
+}
+.real-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.item-name {
+  color: white;
+  background: #14233768;
+  padding: 3px 6px;
+  border-radius: 3px;
+  text-shadow: 0 1px 2px #0008;
+  line-height: 1.2;
+}
+.featured-project .item-name {
+  background: #142337c9;
+}
+#portfolio-window {
+  width: min(960px, 80vw);
+  height: 78dvh;
+  max-height: calc(100dvh - 100px);
+  top: 45%;
+  left: 50%;
+  box-shadow: 0 16px 65px #0003;
+}
+#portfolio-window.notes-window:not(.expanded) {
+  width: min(680px, 75vw);
+  height: 70dvh;
+  left: 50%;
+  top: 45%;
+}
+.real-project {
+  padding: 24px;
+  background: #faf9f8;
+}
+.case-title {
+  margin-bottom: 18px;
+}
+.case-title > p {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #777;
+  margin-bottom: 7px;
+}
+.case-title h2 {
+  font-size: 30px;
+  letter-spacing: -0.8px;
+  line-height: 1.1;
+  margin-bottom: 9px;
+}
+.case-title > span {
+  font-size: 14px;
+  line-height: 1.4;
+  color: #555;
+}
+.case-cover {
+  margin: 0;
+}
+.case-cover img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+.case-cover figcaption {
+  padding: 7px 0;
+  font-size: 11px;
+  color: #666;
+}
+.outcome-strip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  border-block: 1px solid #d8d5d2;
+  padding: 13px 0;
+  margin: 12px 0 23px;
+}
+.outcome-strip > span {
+  font-weight: 600;
+  font-size: 12px;
+}
+.case-section {
+  margin: 25px 0;
+}
+.case-section h3,
+.case-evidence h3 {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+.case-section p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #505050;
+  margin: 8px 0;
+}
+.contribution-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 25px;
+}
+.contribution-grid strong {
+  font-size: 13px;
+  line-height: 1.5;
+}
+.case-section .case-stage {
+  font-size: 12px;
+  color: #777;
+}
+.journey-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding-left: 20px;
+  gap: 22px;
+  font-size: 12px;
+  line-height: 1.5;
+}
+.case-gallery {
+  gap: 24px;
+}
+.case-gallery img {
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+.case-gallery figcaption {
+  padding: 9px 0;
+  background: none;
+}
+.case-footer {
+  justify-content: space-between;
+  padding: 15px 0;
+  margin-top: 20px;
+  border-top: 1px solid #ddd;
+  background: none;
+}
+.finder-view {
+  padding: 24px;
+}
+.finder-view h2 {
+  font-size: 26px;
+}
+.finder-intro {
+  max-width: 520px;
+  font-size: 13px;
+  line-height: 1.5;
+  margin-block: 10px 20px;
+}
+.finder-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+.finder-file {
+  text-align: left;
+  align-items: stretch;
+  padding: 0 0 10px;
+  overflow: hidden;
+  border: 1px solid #d8d4d0;
+  border-radius: 6px;
+  background: #fff9;
+}
+.finder-file.featured-file {
+  border-color: #a8b4c1;
+}
+.real-finder-preview {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16/9;
+}
+.finder-file strong {
+  text-align: left;
+  font-size: 17px;
+  padding: 0 12px;
+}
+.finder-file small {
+  text-align: left;
+  font-size: 12px;
+  padding: 0 12px;
+}
+.file-kicker {
+  padding: 6px 12px 0;
+  font-size: 10px;
+  color: #627080;
+}
+.finder-footer {
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.notes-window .about-photo {
+  display: block;
+  height: 180px;
+  overflow: hidden;
+  position: relative;
+}
+.notes-window .about-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 40% 39%;
+}
+.notes-window .about-photo > span {
+  display: none;
+}
+@media (min-width: 810px) and (max-width: 1050px) {
+  .desktop-item {
+    scale: 0.84;
+  }
+  .desktop-identity h1 {
+    font-size: 18px;
+  }
+}
+@media (max-width: 809px) {
+  .desktop-identity {
+    top: 14px;
+    left: 110px;
+    right: 12px;
+    max-width: none;
+  }
+  .desktop-identity h1 {
+    font-size: 17px;
+  }
+  .desktop-identity p {
+    font-size: 10px;
+  }
+  .desktop-identity > span {
+    font-size: 10px;
+    max-width: 220px;
+  }
+  .desktop-identity > div {
+    gap: 10px;
+    margin-top: 5px;
+  }
+  .desktop-identity button {
+    font-size: 10px;
+  }
+  .desktop-item {
+    --thumb-w: 82px !important;
+    --thumb-h: 47px !important;
+    gap: 5px;
+    max-width: 120px;
+  }
+  .desktop-item[data-open="indoasian"] {
+    --my: 5% !important;
+  }
+  .item-name {
+    font-size: 10px;
+    max-width: 120px;
+    padding: 3px 4px;
+  }
+  #portfolio-window,
+  #portfolio-window.notes-window:not(.expanded) {
+    width: 94vw !important;
+    height: 80dvh;
+    max-height: calc(100dvh - 30px);
+    left: 50% !important;
+    top: 48% !important;
+  }
+  .real-project,
+  .finder-view {
+    padding: 14px;
+  }
+  .case-title h2 {
+    font-size: 25px;
+  }
+  .case-title > span,
+  .case-section p {
+    font-size: 13px;
+  }
+  .contribution-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  .journey-strip {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .finder-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .window-controls {
+    gap: 12px;
+  }
+  .window-controls button {
+    width: 12px;
+    height: 12px;
+  }
+  .window-bar {
+    height: 39px;
+  }
+  .notes-window .window-sidebar {
+    width: 77px;
+  }
+}
+@media (max-height: 700px) and (max-width: 809px) {
+  .desktop-identity {
+    left: 82px;
+    top: 10px;
+  }
+  .desktop-identity > span,
+  .desktop-identity > div {
+    display: none;
+  }
+  .desktop-item {
+    scale: 0.85;
+    --thumb-w: 83px !important;
+    --thumb-h: 47px !important;
+  }
+  .desktop-item[data-open="indoasian"],
+  .desktop-item[data-open="xfactorz"] {
+    --my: 17% !important;
+  }
+  .desktop-item[data-open="trainai"],
+  .desktop-item[data-open="amplifier"] {
+    --my: 29% !important;
+  }
+  .desktop-item[data-open="carandbike"],
+  .desktop-item[data-open="riyadh"] {
+    --my: 41% !important;
+  }
+  .desktop-item[data-open="legrand"],
+  .desktop-item[data-open="innoval"] {
+    --my: 53% !important;
+  }
+  .desktop-item[data-open="diy"],
+  .desktop-item[data-open="abc"] {
+    --my: 65% !important;
+  }
+  .desktop-item[data-open="fab"],
+  .desktop-item[data-open="physio"] {
+    --my: 77% !important;
+  }
+  .desktop-item[data-open="gib"] {
+    --my: 90% !important;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wallpaper > img {
+    animation: none;
+    transition: none;
+  }
 }

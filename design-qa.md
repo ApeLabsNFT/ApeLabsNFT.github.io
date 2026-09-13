@@ -1,50 +1,39 @@
 # Portfolio design and content QA
 
-Status: passed for the requested design adaptation.
+Reviewed 13 September 2026. This supersedes the earlier 60px-thumbnail review.
 
-Reference: https://www.bychudy.com/
-Implementation: Tejus Sharma portfolio, production build tested locally on 13 September 2026.
+## Implemented brief
 
-## Scope
+Preserve the Bychudy photo desktop, scattered files, glass dock and window controls while following the user's later request for a visible portrait, larger covers, project prioritisation and open case-study evidence. Retain Tejus's identity and projects. No decorative hero was added.
 
-Reproduce the reference's photo desktop, scattered project thumbnails, white uppercase labels, glass dock, compact information windows, Notes navigation, hover effects and dragging. Retain Tejus's own portrait and projects. The user's subsequent correction takes precedence over the reference's item count: each of the 13 projects appears once on the desktop, with its gallery inside the matching case.
+The portrait uses a less enlarged crop, starts clear, settles to 1.5px blur, and changes to 7px when a portfolio window opens. The small identity statement uses the confirmed title Director Of Growth. Featured work leads the archive: TrainAI, two banking engagements, Legrand Configurators and Xfactorz. Each case visibly separates contribution, wider team, scope/status, journey and evidence. These usability changes intentionally differ from the reference's small collapsed windows.
 
-## Visual evidence
+## Content verification
 
-- `qa/comparison-desktop.jpg`: source and implementation at 1440 × 900.
-- `qa/comparison-mobile.jpg`: source and implementation at 390 × 844 CSS pixels (843 captured bitmap rows).
-- `qa/comparison-desktop-window.jpg`: equivalent information-window states at 887 × 650 CSS pixels; the comparison trims the implementation's final bitmap row to the source's 649 rows.
-- `qa/comparison-mobile-window.jpg`: mobile information windows.
-- `qa/implementation-small-mobile.png`: 320 × 568, all 13 files visible.
-- `qa/implementation-about.png` and `qa/implementation-career.png`: corrected personal content.
-- `qa/project-asset-review.jpg`: contact sheet used to check actual image subjects against their names and captions.
+- Clicked all 13 desktop files and checked names, hashes, covers and gallery paths: `qa/final-route-checks.json`.
+- All 13 covers have distinct project mappings; displayed image assets exist and decode; no duplicate image path within a case gallery.
+- Exact supplied-file mapping is in `public/work/image-manifest.json`. The watermark-free IndoAsian version replaces its duplicate.
+- Bank mockups are labelled illustrative reconstructions with fictional data, before the full case cover. Supporting diagrams are labelled schematics, not client artefacts. Riyadh remains a concept.
+- car&bike includes real homepage, discovery, vehicle-detail and comparison captures with dated source links in the manifest. Attribution distinguishes Tejus's contribution from the current public website.
+- TrainAI retains authentic learner, lesson and creation screens and adds a high-level architecture explanation.
+- PBLSH retains public website artwork and supplied presentation cover. Verified production workflow screens were not available; no fabricated production evidence was added.
+- Current title is Director Of Growth in identity, About, career, metadata, structured data and both title occurrences in the CV. PDF rendering reviewed; word-count comparison verified that the two title replacements are the only text changes.
+- Career expands the CV's UX (2023–2024), strategy/UX (2024–2025) and pre-sales lead (2025–2026) progression. Unverified outcome metrics and testimonials were not added.
 
-The combined images were visually reviewed. Desktop dock: 573 × 66.25, x433.5, y783.75 at 1440 × 900, matching the source measurements. Mobile dock: 61 × 604.25, x25, y119.875 at 390 × 844, matching the source measurements. Thumbnails use the reference's 60px scale and SF Pro labels; the wider Xfactorz preview follows its wide-artwork treatment. Window size, surface, header, traffic-light controls and disclosure hierarchy follow the reference.
+## Visual and interaction evidence
 
-Intentional differences: personal imagery/product icons and LinkedIn replace the reference author's identity and Adobe/Instagram links; 13 unique cases replace repeated gallery shortcuts; bank cases use a Notes icon and publish no screenshots; the bin is empty rather than relabelling real projects as discarded ideas. Mobile windows stay on-screen, and the shortest phone layout has compact anchors to keep tiles clear of the dock. These are content and usability adaptations, not a claim of identical source pixels.
+- `qa/final-desktop.png`: 1440 × 900 desktop composition.
+- `qa/final-archive.png`: larger two-column featured archive.
+- `qa/final-mobile.png` and `qa/final-mobile-case.png`: 390 × 844 desktop and readable project window.
+- `qa/final-small-mobile.png`: 320 × 568, all 13 project tiles within the viewport.
+- Existing `qa/reference-*` captures document the reference; older `qa/comparison-*` files are historical, not claims about the final build.
 
-## Content corrections
+No horizontal document overflow at either tested phone size. Every project tile fits at 320 × 568. Keyboard Shift+Tab wraps from Close to the last case action; Tab wraps back to Close; Escape closes. Featured filter returns five cases, AI returns TrainAI/Xfactorz/PBLSH, Independent returns PhysioByRutvi, All returns 13. The desktop wallpaper computes to 1.5px blur and the open-window wallpaper to 7px. Browser console check returned no warnings or errors.
 
-- About, accessible heading and career use Director — Growth & Strategy, following `public/work/Tejus-Sharma-CV.pdf`.
-- Removed unsupported sales-cycle percentages, proposal counts, freelance metrics, detailed pipeline claims and an unsupported degree specialism from the career page.
-- Career dates and the three experience entries follow the included CV.
-- `src/projects.ts` is the shared source for file names, preview covers, work-archive entries and case content. PBLSH is consistently named; Portfolio Amplifier is explained inside its case.
-- Removed mock image usage, the invented installed-Riyadh caption, and the fallback that repeated a cover as a full gallery for cases with no published screens.
-- Corrected Legrand slide captions to identify the existing-site review, wireframes and user pain points actually shown.
-- Kept Arteor and DIY imagery labelled by workstream; Riyadh images are explicitly concepts. Xfactorz's applied Legrand work is identified within that case.
+## Build and publication
 
-## Validation
+Production TypeScript/Vite build and whitespace checks run before commit. Publication uses the existing GitHub Pages workflow on main, as explicitly requested. The live hashed bundle and key assets are checked after deployment. Social metadata includes canonical URL, Open Graph and Twitter cards, a screenshot preview, ProfilePage/Person structured data, sitemap and robots. Hash case routes share the canonical homepage.
 
-- `npm run build`: passed TypeScript and Vite production build.
-- `git diff --check`: passed.
-- Clicked every desktop file and checked its opened name, key, cover and gallery: 13 unique mappings passed. Evidence: `qa/route-checks.json`.
-- All displayed project image files exist and decode; no duplicate image path within a gallery and no `mock-` image referenced by an opened case.
-- No horizontal overflow at 390 × 844 or 320 × 568; no clipped project tile at 320 × 568.
-- AI archive filter returns TrainAI, Xfactorz and PBLSH; Independent returns PhysioByRutvi.
-- Verified project disclosures, close, minimize/restore, expand/restore, title-bar drag, file dragging, hash navigation and Escape during the implementation review.
-- Rechecked About/CV navigation, the empty bin and successful email copy on the final production build.
-- Browser console: no warnings or errors on the tested build.
+## Source limitations
 
-## Publication
-
-The existing GitHub Pages workflow builds and deploys `dist` on pushes to `main`. Publication is explicitly authorized by the user; the deployment result and public site are verified after pushing.
+The previously described four unpushed commits and extra banking/PBLSH workflow screens were not present in this checkout. This update uses the available supplied covers and actual repository evidence. No publication-cleared testimonials or new measured business outcomes were available. These remain content inputs, not claims represented as complete evidence.
