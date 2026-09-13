@@ -1651,3 +1651,56 @@ summary::marker {
     transition: none;
   }
 }
+
+/* The idea collection: a notebook of demos and digital experiments. */
+.idea-lab { padding: 30px; background: #f6f3e9; color: #242923; min-height: 100%; }
+.idea-lab-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; padding-bottom: 28px; border-bottom: 1px solid #c8c5b8; }
+.idea-eyebrow, .idea-type, .idea-index { font-size: 10px; font-weight: 700; letter-spacing: 1.4px; }
+.idea-lab-header h2 { margin: 10px 0; font-size: clamp(32px, 4vw, 48px); line-height: 1; letter-spacing: -2px; }
+.idea-lab-header h2 > span { font-size: 17px; vertical-align: top; margin-left: 4px; }
+.idea-lab-header p { font-size: 14px; line-height: 1.55; max-width: 460px; color: #626557; }
+.idea-count { font-size: 42px; line-height: 1; font-family: Georgia, serif; text-align: right; color: #686d57; }
+.idea-count small { display: block; font: 8px/1.5 Arial, sans-serif; letter-spacing: 1px; margin-top: 10px; white-space: nowrap; }
+.idea-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin: 26px 0; }
+.idea-card { background: #fffefa; border: 1px solid #d7d4c7; border-radius: 9px; overflow: hidden; box-shadow: 0 5px 12px #3c442007; }
+.idea-art { position: relative; height: 230px; padding: 44px 20px 30px; background: #e6e7df; overflow: hidden; }
+.idea-art > img { width: 100%; height: 100%; object-fit: cover; object-position: center; border-radius: 4px; box-shadow: 0 8px 15px #19222222; }
+.idea-index { position: absolute; top: 16px; left: 20px; color: #4e564c; }
+.idea-sticker { position: absolute; right: 12px; bottom: 10px; background: #e7f798; padding: 7px 10px; font: italic 14px Georgia,serif; transform: rotate(-4deg); color: #323b1e; box-shadow: 1px 3px 5px #0001; }
+.idea-card-body { padding: 22px; }
+.idea-type { color: #6a705b; letter-spacing: 1px; font-size: 9px; }
+.idea-card h3 { margin: 9px 0 10px; font-size: 22px; line-height: 1.15; letter-spacing: -.6px; }
+.idea-card p { color: #626557; font-size: 13px; line-height: 1.6; }
+.idea-launch { display: flex; justify-content: space-between; align-items: center; gap: 16px; border-top: 1px solid #dedccf; margin-top: 20px; padding-top: 15px; font-size: 12px; font-weight: 700; text-decoration: none; color: #293d22; min-height: 44px; }
+.idea-launch > span { font-size: 21px; }
+.idea-launch:hover { color: #687b24; }
+.cinema-art { background: #23251f; }
+.cinema-art .idea-index { color: #d7d8c5; }
+.cinema-ticket { position: relative; border: 1px dashed #a2a373; padding: 12px 20px; color: #f1f2b5; transform: rotate(-3deg); background: #33362a; }
+.cinema-ticket > span:first-child { font-size: 10px; font-weight: 700; letter-spacing: 3px; }
+.cinema-ticket strong { display: block; font-size: 29px; letter-spacing: -1px; line-height: .98; margin: 12px 0; }
+.ticket-bottom { display: flex; justify-content: space-between; align-items: center; font-size: 8px; letter-spacing: 1px; border-top: 1px dashed #87895f; padding-top: 8px; }
+.ticket-bottom b { font-size: 24px; line-height: 1; }
+.idea-physio { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; }
+.idea-physio .idea-art { height: 100%; min-height: 245px; background: #dfe8da; }
+.idea-physio .idea-sticker { background: #fff5ba; }
+.idea-note { background: transparent; color: #5d6652; font-size: 12px; text-decoration: underline; text-underline-offset: 4px; min-height: 42px; padding: 4px 0; }
+.idea-lab-footer { border-top: 1px solid #c8c5b8; padding-top: 20px; display: flex; justify-content: space-between; gap: 16px; align-items: center; }
+.idea-lab-footer span { font: italic 15px Georgia,serif; color: #6a705b; }
+.idea-lab-footer button { padding: 10px 0; background: none; font-size: 12px; color: #354229; }
+@media(max-width: 809px) {
+ .idea-lab { padding: 20px 15px; }
+ .idea-lab-header { gap: 12px; }
+ .idea-lab-header h2 { font-size: 34px; }
+ .idea-eyebrow { font-size: 8px; letter-spacing: 1px; }
+ .idea-count { font-size: 32px; }
+ .idea-count small { white-space: normal; max-width: 55px; font-size: 7px; }
+ .idea-lab-header p { font-size: 13px; }
+ .idea-cards { grid-template-columns: 1fr; gap: 18px; }
+ .idea-physio { display: block; }
+ .idea-physio .idea-art { height: 230px; min-height: 0; }
+ .idea-card-body { padding: 18px; }
+ .idea-lab-footer { align-items: flex-start; flex-direction: column; gap: 8px; }
+}
+
+.dock-ideas::after { content: "3"; position: absolute; top: -3px; right: -2px; min-width: 17px; height: 17px; border-radius: 50%; background: #e7f798; border: 1px solid #6b785a; color: #28361c; font: 700 10px/15px Arial,sans-serif; text-align: center; pointer-events: none; }

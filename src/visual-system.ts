@@ -15,7 +15,6 @@ export const projectOrder: ProjectKey[] = [
   "indoasian",
   "innoval",
   "riyadh",
-  "physio",
 ];
 export const outcomes: Record<ProjectKey, string> = {
   trainai: "Demonstrated · AI learning platform",
@@ -30,17 +29,19 @@ export const outcomes: Record<ProjectKey, string> = {
   indoasian: "Delivered · website",
   innoval: "Delivered · virtual showroom",
   riyadh: "Concept · experience centre",
-  physio: "Live · independent business",
+  physio: "Bin of Ideas · digital experiment",
 };
 export const coverCaption = (key: ProjectKey) =>
-  key === "fab" || key === "gib"
+  key === "indoasian"
+    ? "Live website capture · 14 September 2026"
+    : key === "fab" || key === "gib"
     ? "Illustrative reconstruction · fictional data · not a client screen"
     : key === "riyadh"
       ? "Concept visualisation · not a built installation"
       : "Product presentation mockup · supplied visual";
 export const teamContribution = (key: ProjectKey) =>
   key === "physio"
-    ? "Clinical care is led by Dr Rutvi K Gandhi (PT). My remit is the business’s product, brand, growth and digital systems."
+    ? "Clinical care is led by Dr Rutvi K Gandhi (PT). This entry explores the digital experience around home-based care."
     : key === "trainai" || key === "xfactorz" || key === "amplifier"
       ? "Built with EvolutionCo’s product, design and engineering team. The role above describes my contribution; implementation and delivery were collaborative."
       : "Delivered or developed with EvolutionCo’s design, content, solution and engineering teams. The role above describes my contribution to the wider team’s work.";

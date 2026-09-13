@@ -30,12 +30,6 @@
     "type": "Product presentation mockup \u2014 supplied visual"
   },
   {
-    "project": "indoasian",
-    "source": "ChatGPT Image Sep 13, 2026, 10_04_33 AM (16).png",
-    "output": "/work/covers/indoasian.webp",
-    "type": "Product presentation mockup \u2014 supplied visual"
-  },
-  {
     "project": "trainai",
     "source": "ChatGPT Image Sep 13, 2026, 10_04_25 AM (7).png",
     "output": "/work/covers/trainai.webp",
@@ -104,5 +98,19 @@
     "output": "/work/carandbike-comparison.png",
     "type": "Public website capture: comparison",
     "captured": "2026-09-13"
+  },
+  {
+    "project": "indoasian",
+    "source": "https://www.indoasian.com/",
+    "output": "/work/indoasian-live-2026-09-14.png",
+    "type": "Public website capture \u00b7 Homepage cover",
+    "captured": "2026-09-14"
+  },
+  {
+    "project": "indoasian",
+    "source": "https://www.indoasian.com/",
+    "output": "/work/indoasian-live-products-2026-09-14.png",
+    "type": "Public website capture \u00b7 Product discovery",
+    "captured": "2026-09-14"
   }
 ]

@@ -1,33 +1,43 @@
-# Tejus Sharma — Personal portfolio
+# Tejus Sharma
 
-A TypeScript/Vite portfolio inspired by the photo desktop, scattered project files and glass dock at https://www.bychudy.com/. The September 2026 update adds larger product covers, visible identity, prioritised work and readable case-study windows, following the user's latest feedback.
+**Director Of Growth · EvolutionCo Group**
 
-## Run and build
+Enterprise AI, product strategy and experience design.
+
+[Explore the portfolio](https://apelabsnft.github.io/) · [LinkedIn](https://www.linkedin.com/in/tejus-sharma-6831a232b) · [Email](mailto:tejus.sharma10@gmail.com)
+
+I turn complex business requirements into useful digital products—from discovery and UX to solution architecture, product planning and demonstrations. This portfolio brings together enterprise platforms, AI products and immersive experiences developed with multidisciplinary teams.
+
+## Selected work
+
+- **TrainAI** — enterprise learning, knowledge ingestion and AI-powered course experiences.
+- **Banking platforms** — corporate banking journeys and unified portal experiences.
+- **Legrand Configurators** — guided product selection and configuration.
+- **Xfactorz** — conversational AI and experiences across digital and physical spaces.
+- **PBLSH** — turning project material into publishable content.
+- **Web and spatial experiences** — car&bike, Aditya Birla Capital, Legrand India, IndoAsian, Virtual Innoval and Legrand Riyadh.
+
+Each case describes the project, my contribution, the wider team's work and supporting visuals. Confidential engagements are anonymised; reconstructions and concepts are clearly labelled.
+
+## Bin of Ideas
+
+A collection of demos and independent digital experiments:
+
+- [Legrand Training Experience](https://ai.xfactorz.evolutionco.in/)
+- [PVR INOX Theatre Experience](https://ai.theatre.evolutionco.co.in/) — sign-in required
+- [PhysioByRutvi](https://physiobyrutvi.in/) — a digital-service exploration
+
+[Open the Bin of Ideas](https://apelabsnft.github.io/#ideas)
+
+## Development
+
+Built with TypeScript, Vite and CSS. Local assets, responsive layouts, keyboard-accessible windows and reduced-motion support keep the experience lightweight and usable.
 
 ```sh
 npm ci
-npm run dev -- --port 4174
+npm run dev
 npm run build
 npm run preview
 ```
 
-The existing GitHub Pages workflow builds `dist` and publishes on pushes to `main` at https://apelabsnft.github.io/.
-
-## Content and assets
-
-- `src/projects.ts`: the 13 project names, narratives, roles, sources and galleries.
-- `src/visual-system.ts`: featured order, outcome strips, cover disclosures and team contribution copy.
-- `src/desktop-files.ts`: one desktop file per project, with responsive anchors and larger featured covers.
-- `src/main.ts`: case studies, archive, About, career, contact and window interactions.
-- `src/desktop.css`: desktop composition, portrait visibility/blur, responsive windows and accessibility styles.
-- `public/work/covers/`: supplied product presentation visuals, optimised to WebP without changing their content.
-- `public/work/image-manifest.json`: exact cover-to-project mapping and car&bike capture sources. The clean IndoAsian image is used, excluding the duplicate with a Windows activation watermark.
-- `public/work/Tejus-Sharma-CV.pdf`: existing CV with the two title references updated to the user's confirmed **Director Of Growth**.
-- `public/social-preview.png`, `robots.txt`, `sitemap.xml` and metadata in `index.html`: social and search presentation.
-- `qa/final-*` and `design-qa.md`: current review evidence. Earlier captures remain historical comparisons.
-
-Bank covers are illustrative reconstructions with fictional data; client interfaces are not published. Banking schematics are labelled illustrations. Riyadh is a concept, not a built installation. PBLSH uses supplied presentation and public website artwork; verified production workflow screenshots were not available. Public car&bike captures provide current website context, not attribution of every current element to Tejus. Metrics and testimonials without publication-cleared sources were not added.
-
-## Behavior
-
-The portrait starts clear, settles to a light blur and blurs further when a window opens. Project files open on click/tap and support dragging. Red or Escape closes; yellow minimises; the dock restores; green expands/restores. Desktop title bars support dragging and double-click expansion. Hash routes support direct access and browser history. Archive filters include featured work, enterprise UX, AI and independent work. Case-study sections and image evidence are open by default. Keyboard focus loops within the open window and returns on close. Reduced-motion preferences disable decorative animation.
+Source lives in `src/`; static assets are in `public/`. GitHub Actions builds and deploys the portfolio to GitHub Pages when changes are pushed to `main`.

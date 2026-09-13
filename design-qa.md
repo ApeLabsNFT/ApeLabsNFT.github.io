@@ -1,3 +1,18 @@
+# Current release — 14 September 2026
+
+- README rewritten as a professional introduction, selected-work overview, idea links and concise development instructions.
+- Bin of Ideas now contains three styled cards: Legrand Training Experience, PVR INOX Theatre Experience and PhysioByRutvi. Demo URLs recovered from the user's project tracker and checked in the browser. PVR opens a sign-in screen and is labelled accordingly. No tracker credentials were added to the repository.
+- Physio moved from desktop/Selected Work into the ideas collection. Selected Work now has 12 entries. The existing Physio hash route remains available and returns to the ideas collection.
+- Co-founder wording removed from About, the Physio narrative and downloadable CV. PDF rendered for visual review; text comparison confirms only the intended wording changed.
+- IndoAsian's old mockup and gallery usage replaced with homepage and product-solution captures from https://www.indoasian.com/ on 14 September 2026. The image manifest records both sources.
+- Verified three idea cards, all three external destinations, Physio detail/return navigation, 12 work entries without Physio, updated IndoAsian cover/gallery/caption, and no horizontal overflow at 390 × 844.
+- Review captures: `qa/ideas-desktop-2026-09-14.png`, `qa/ideas-mobile-2026-09-14.png`.
+- Production build and live deployment verification complete the release checks.
+
+---
+
+# Previous release review (13 September 2026)
+
 # Portfolio design and content QA
 
 Reviewed 13 September 2026. This supersedes the earlier 60px-thumbnail review.

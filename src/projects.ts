@@ -471,16 +471,16 @@ export const projects: Record<ProjectKey, Project> = {
   },
   physio: {
     name: "PhysioByRutvi",
-    tag: "Brand, product & growth",
+    tag: "Bin of Ideas · digital experience",
     color: "green",
-    role: "Co-founder · product, brand & growth",
-    status: "Independent business · Mumbai",
+    role: "Independent digital exploration",
+    status: "Digital experiment · Bin of Ideas",
     description: "Building the digital side of care that comes home.",
-    text: "As co-founder, I work on the product, brand, growth and digital systems behind a Mumbai home-physiotherapy business. The website connects service discovery, local search and a practical enquiry journey for patients and their families.",
+    text: "A digital-experience exploration around home physiotherapy in Mumbai: helping people discover care, understand the service area and take the next step with confidence.",
     focus:
       "Website architecture, service journeys, multilingual experience, SEO, booking and lead-generation workflows.",
     context:
-      "Clinical care is led by Dr Rutvi K Gandhi (PT). My contribution centres on the business’s product, brand, growth and digital experience.",
+      "Filed in the Bin of Ideas as an exploration of service discovery, local search and a simpler enquiry journey.",
     cover: img("physio-hero"),
     logo: img("physio-logo"),
     url: "https://physiobyrutvi.in/",
@@ -548,3 +548,10 @@ projects.trainai.gallery.push({
   caption:
     "TrainAI · high-level architecture summary, based on the documented product scope",
 });
+
+// Current public IndoAsian site, captured directly on 14 September 2026.
+projects.indoasian.cover = "/work/indoasian-live-2026-09-14.png";
+projects.indoasian.gallery = [{
+  image: "/work/indoasian-live-products-2026-09-14.png",
+  caption: "IndoAsian · current public product-discovery experience · 14 September 2026",
+}];
