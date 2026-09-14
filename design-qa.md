@@ -1,4 +1,16 @@
-# Current release — 14 September 2026
+# Current release — Highland and personal About, 14 September 2026
+
+- Added Highland Lifespaces as a distinct thirteenth Selected Work project. Contribution is grounded in project correspondence: UX feedback, scope alignment, launch approval and handover coordination. Team engineering work is attributed collectively.
+- Captured the current Highland homepage and Mayfields detail page; recorded public source URLs in the image manifest. No raw email or credentials were stored.
+- Replaced About with a personal narrative and all four supplied portraits. Reviewed the photo layout and story on desktop and at 390 × 844.
+- Replaced the Selected Work dock icon with an original blue folder SVG.
+- Removed the Bin of Ideas number badge and the fake creative-warning popup. Simplified the three idea cards while retaining their verified destinations.
+- Checked Highland title, cover, gallery and destination; confirmed thirteen distinct desktop projects, no horizontal overflow at 320 × 568, and no browser warnings or errors.
+- Refreshed the social preview. Review images: `qa/about-story-desktop.png` and `qa/about-story-mobile.png`.
+
+---
+
+# Earlier release — 14 September 2026
 
 - README rewritten as a professional introduction, selected-work overview, idea links and concise development instructions.
 - Bin of Ideas now contains three styled cards: Legrand Training Experience, PVR INOX Theatre Experience and PhysioByRutvi. Demo URLs recovered from the user's project tracker and checked in the browser. PVR opens a sign-in screen and is labelled accordingly. No tracker credentials were added to the repository.

@@ -112,5 +112,19 @@
     "output": "/work/indoasian-live-products-2026-09-14.png",
     "type": "Public website capture \u00b7 Product discovery",
     "captured": "2026-09-14"
+  },
+  {
+    "project": "highland",
+    "source": "https://www.highlandlifespaces.com/",
+    "output": "/work/highland-home-2026-09-14.png",
+    "type": "Public website capture \u00b7 Homepage",
+    "captured": "2026-09-14"
+  },
+  {
+    "project": "highland",
+    "source": "https://www.highlandlifespaces.com/highland-mayfields",
+    "output": "/work/highland-mayfields-2026-09-14.png",
+    "type": "Public website capture \u00b7 Project detail",
+    "captured": "2026-09-14"
   }
 ]

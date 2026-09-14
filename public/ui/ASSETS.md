@@ -17,3 +17,5 @@ The following interface assets were obtained from the reference's rendered asset
 | sf-pro-regular.woff2 | https://framerusercontent.com/assets/nBTqkRqUvLAXnLiEsHruI3kmoQ.otf |
 
 Fonts are subset to the Latin characters and punctuation used by this portfolio and compressed as WOFF2. Source artwork and Bychudy's personal project content were not substituted for Tejus's work. The first three dock icons use the existing TrainAI, Xfactorz, and PBLSH branding; LinkedIn replaces the reference's Instagram destination.
+
+`selected-work.svg` is an original vector folder icon created for this portfolio. It replaces the photos icon in the Selected Work dock entry.

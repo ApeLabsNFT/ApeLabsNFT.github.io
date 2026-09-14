@@ -8,6 +8,7 @@ const positions: Record<ProjectKey, [number, number, number, number]> = {
   xfactorz: [73, 24, 77, 18],
   amplifier: [86, 43, 75, 33],
   physio: [85, 72, 78, 83],
+  highland: [85, 72, 78, 83],
   abc: [12, 70, 40, 73],
   riyadh: [90, 22, 82, 48],
   legrand: [47, 70, 45, 48],
@@ -34,6 +35,7 @@ const mobileLabels: Partial<Record<ProjectKey, string>> = {
   riyadh: "Riyadh",
   innoval: "Innoval",
   physio: "PhysioByRutvi",
+  highland: "Highland",
 };
 export const desktopFiles = projectOrder.map((project, index) => {
   const [x, y, mx, my] = positions[project];

@@ -15,6 +15,7 @@ export const projectOrder: ProjectKey[] = [
   "indoasian",
   "innoval",
   "riyadh",
+  "highland",
 ];
 export const outcomes: Record<ProjectKey, string> = {
   trainai: "Demonstrated · AI learning platform",
@@ -30,9 +31,10 @@ export const outcomes: Record<ProjectKey, string> = {
   innoval: "Delivered · virtual showroom",
   riyadh: "Concept · experience centre",
   physio: "Bin of Ideas · digital experiment",
+  highland: "Live · real-estate website",
 };
 export const coverCaption = (key: ProjectKey) =>
-  key === "indoasian"
+  key === "indoasian" || key === "highland"
     ? "Live website capture · 14 September 2026"
     : key === "fab" || key === "gib"
     ? "Illustrative reconstruction · fictional data · not a client screen"

@@ -15,7 +15,7 @@ I turn complex business requirements into useful digital products—from discove
 - **Legrand Configurators** — guided product selection and configuration.
 - **Xfactorz** — conversational AI and experiences across digital and physical spaces.
 - **PBLSH** — turning project material into publishable content.
-- **Web and spatial experiences** — car&bike, Aditya Birla Capital, Legrand India, IndoAsian, Virtual Innoval and Legrand Riyadh.
+- **Web and spatial experiences** — car&bike, Aditya Birla Capital, Legrand India, IndoAsian, Highland Lifespaces, Virtual Innoval and Legrand Riyadh.
 
 Each case describes the project, my contribution, the wider team's work and supporting visuals. Confidential engagements are anonymised; reconstructions and concepts are clearly labelled.
 

@@ -1,5 +1,6 @@
 import "./desktop.css";
 import { renderIdeas } from "./ideas";
+import { renderAbout } from "./about";
 
 import { projects, type ProjectKey } from "./projects";
 import { renderDesktopFiles } from "./desktop-files";
@@ -36,17 +37,15 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
     <button class="dock-item dock-trainai product-dock" data-open="trainai" aria-label="TrainAI"><span class="dock-tooltip">TrainAI</span>${projectLogo("trainai")}</button>
     <button class="dock-item dock-xfactorz product-dock" data-open="xfactorz" aria-label="Xfactorz"><span class="dock-tooltip">Xfactorz</span>${projectLogo("xfactorz")}</button>
     <button class="dock-item dock-amplifier product-dock" data-open="amplifier" aria-label="PBLSH"><span class="dock-tooltip">PBLSH</span><img src="/work/pblsh-mark.svg" alt=""/></button>
-    <button class="dock-item" id="creative-break" aria-label="Take a creative break"><span class="dock-tooltip">Creative break</span><img src="/ui/warning.avif" alt=""/></button>
     <span class="dock-divider"></span>
     <button class="dock-item dock-about" data-open="about" aria-label="About me and CV"><span class="dock-tooltip">About me & CV</span><img src="/ui/notes.avif" alt=""/></button>
-    <button class="dock-item dock-work" data-open="work" aria-label="Selected work"><span class="dock-tooltip">Selected work</span><img src="/ui/photos.avif" alt=""/></button>
+    <button class="dock-item dock-work" data-open="work" aria-label="Selected work"><span class="dock-tooltip">Selected work</span><img src="/ui/selected-work.svg" alt=""/></button>
     <span class="dock-divider"></span>
     <a class="dock-item dock-linkedin" href="https://www.linkedin.com/in/tejus-sharma-6831a232b" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn (opens in new tab)"><span class="dock-tooltip">LinkedIn</span><span class="linkedin-mark">in</span></a>
     <button class="dock-item dock-contact" data-open="contact" aria-label="Get in touch"><span class="dock-tooltip">Get in touch</span><img src="/ui/mail.avif" alt=""/></button>
     <span class="dock-divider"></span>
     <button class="dock-item dock-ideas" data-open="ideas" aria-label="Bin of ideas"><span class="dock-tooltip">Bin of ideas</span><img src="/ui/bin.avif" alt=""/></button>
   </nav>
-  <dialog id="creative-alert" aria-labelledby="creative-alert-title"><h2 id="creative-alert-title">Creative break</h2><div><img src="/ui/warning.avif" alt=""/><p>Too many tabs. Too many ideas.<br/>A good time to step back and find the right problem.</p></div><button id="dismiss-alert">Back to the work</button></dialog>
   <dialog id="portfolio-window" aria-labelledby="window-title"><div class="window-bar"><div class="window-controls"><button class="window-close" aria-label="Close window"><span>×</span></button><button class="window-minimize" aria-label="Minimize window"><span>−</span></button><button class="window-expand" aria-label="Expand window" aria-pressed="false"><span>↗</span></button></div><span id="window-title"></span></div><div class="window-body"><nav class="window-sidebar" aria-label="About navigation"><button data-open="about">About me</button><button data-open="career">CV</button><button data-open="approach">Approach</button><button data-open="contact">Contact</button></nav><div id="window-content"></div></div><div class="window-status"><span id="window-status-text">Portfolio</span><span>Mumbai, India</span></div></dialog>
   <div class="toast" role="status" aria-live="polite"></div>
 `;
@@ -67,7 +66,7 @@ function renderPage(page: Page): string {
   if (page === "work")
     return `<div class="finder-view"><div class="finder-path">Tejus Sharma <span>›</span> Work archive</div><h2>Selected work</h2><p class="finder-intro">Start with enterprise AI, banking and product configuration. Explore the wider portfolio below.</p><div class="work-filters" aria-label="Filter projects"><button class="active" aria-pressed="true" data-filter="all">All work <span>${projectKeys.length}</span></button><button data-filter="featured">Start here</button><button data-filter="enterprise">Enterprise & UX</button><button data-filter="ai">AI products</button></div><div class="finder-grid">${projectKeys.map((key) => `<button class="finder-file ${featuredProjects.includes(key) ? "featured-file" : ""}" data-open="${key}" data-featured="${featuredProjects.includes(key)}" data-category="${["trainai", "xfactorz", "amplifier"].includes(key) ? "ai" : key === "physio" ? "independent" : "enterprise"}"><span class="real-finder-preview"><img src="${projects[key].cover}" alt="" loading="lazy"/></span><span class="file-kicker">${featuredProjects.includes(key) ? "START HERE · " : ""}${outcomes[key]}</span><strong>${projects[key].name}</strong><small>${projects[key].tag}${key === "fab" || key === "gib" ? " · Illustrative reconstruction" : key === "riyadh" ? " · Concept visual" : ""}</small></button>`).join("")}</div><div class="finder-footer"><span>${projectKeys.length} projects · Strategy, design & AI</span><a href="/work/image-manifest.json" target="_blank" rel="noopener noreferrer">Image manifest ↗</a></div><button class="career-link" data-open="career">The experience behind the work <span>Career & CV ↗</span></button></div>`;
   if (page === "about")
-    return `<div class="about-page"><div class="about-photo"><img src="/tejus-portrait.jpeg" alt="Tejus Sharma wearing a blue suit and amber glasses"/><span>MUMBAI, INDIA ↗</span></div><div class="page-padding"><div class="eyebrow">ABOUT ME</div><h2>Hi, I’m Tejus<span class="accent">.</span></h2><h3>Director Of Growth<br/>Enterprise AI & Product Strategy</h3><p>I lead AI productisation, growth strategy and pre-sales at EvolutionCo Group. My work connects discovery, product strategy, UX and solution architecture, taking an idea through scope, prototypes, commercial planning and pilots.</p><p>My background spans enterprise UX, banking journeys and Web3 product strategy. The Bin of Ideas is where I collect smaller experiments in learning, conversation and digital services.</p><div class="about-tags"><span>Experience design</span><span>Product strategy</span><span>Enterprise AI</span></div><div class="social-links">${external("https://www.linkedin.com/in/tejus-sharma-6831a232b", "LinkedIn")}${external("https://github.com/ApeLabsNFT", "GitHub")}</div><button class="solid-button" data-open="career">View my CV ${arrow}</button></div></div>`;
+    return renderAbout();
   if (page === "career")
     return `<div class="career-page"><div class="eyebrow">EXPERIENCE & EDUCATION</div><h2>Career & CV</h2><p class="career-intro">Enterprise AI, product strategy, UX and solution architecture.</p><div class="career-timeline">${[
       [
@@ -139,6 +138,7 @@ const titles: Record<Page, string> = {
   innoval: "Virtual Innoval",
   riyadh: "Legrand Riyadh — Experience centre",
   physio: "PhysioByRutvi",
+  highland: "Highland Lifespaces",
   ideas: "Bin of ideas",
   career: "Career & CV",
   trainai: "TrainAI — Project overview",
@@ -370,17 +370,6 @@ document.addEventListener("click", async (event) => {
   } catch {
     copyButton.textContent = "Select the email above to copy";
   }
-});
-const creativeAlert =
-  document.querySelector<HTMLDialogElement>("#creative-alert")!;
-document
-  .querySelector("#creative-break")!
-  .addEventListener("click", () => creativeAlert.showModal());
-document
-  .querySelector("#dismiss-alert")!
-  .addEventListener("click", () => creativeAlert.close());
-creativeAlert.addEventListener("click", (event) => {
-  if (event.target === creativeAlert) creativeAlert.close();
 });
 syncHash();
 

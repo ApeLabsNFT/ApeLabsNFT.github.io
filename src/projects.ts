@@ -11,7 +11,8 @@ export type ProjectKey =
   | "trainai"
   | "xfactorz"
   | "amplifier"
-  | "physio";
+  | "physio"
+  | "highland";
 export interface Project {
   name: string;
   tag: string;
@@ -469,6 +470,22 @@ export const projects: Record<ProjectKey, Project> = {
       },
     ],
   },
+  highland: {
+    name: "Highland Lifespaces",
+    tag: "Real-estate website",
+    color: "green",
+    role: "UX, feedback coordination & delivery alignment",
+    status: "Website launch & handover · December 2025",
+    description: "Helping people explore spaces and find their next address.",
+    text: "Highland Lifespaces brings residential, commercial, industrial and hospitality developments into one digital experience. The website connects the brand story with project discovery, individual development pages and enquiry journeys.",
+    focus: "Coordinating client feedback, content and interface refinements, scope alignment, launch readiness and handover with the delivery team. Follow-up work covered mobile discovery and the enquiry journey.",
+    context: "Delivered with EvolutionCo’s design and engineering teams, working with the client’s agency stakeholders. The team rebuilt the site around a headless CMS and a Next.js frontend. My role connected feedback and delivery decisions through launch and subsequent refinements. The images show the public website captured in September 2026.",
+    cover: "/work/highland-home-2026-09-14.png",
+    url: "https://www.highlandlifespaces.com/",
+    link: "Visit Highland Lifespaces",
+    steps: ["Explore the spaces", "Find a development", "Understand the project", "Start an enquiry"],
+    gallery: [{ image: "/work/highland-mayfields-2026-09-14.png", caption: "Highland Mayfields · public project-detail page · 14 September 2026" }],
+  },
   physio: {
     name: "PhysioByRutvi",
     tag: "Bin of Ideas · digital experience",
@@ -555,3 +572,5 @@ projects.indoasian.gallery = [{
   image: "/work/indoasian-live-products-2026-09-14.png",
   caption: "IndoAsian · current public product-discovery experience · 14 September 2026",
 }];
+
+projects.highland.cover = "/work/highland-home-2026-09-14.png";

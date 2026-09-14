@@ -1159,7 +1159,7 @@ summary::marker {
     --mx: 42% !important;
     --my: 78% !important;
   }
-  .desktop-item[data-open="physio"] {
+  .desktop-item[data-open="highland"] {
     --mx: 78% !important;
     --my: 78% !important;
   }
@@ -1638,7 +1638,7 @@ summary::marker {
     --my: 65% !important;
   }
   .desktop-item[data-open="fab"],
-  .desktop-item[data-open="physio"] {
+  .desktop-item[data-open="highland"] {
     --my: 77% !important;
   }
   .desktop-item[data-open="gib"] {
@@ -1703,4 +1703,38 @@ summary::marker {
  .idea-lab-footer { align-items: flex-start; flex-direction: column; gap: 8px; }
 }
 
-.dock-ideas::after { content: "3"; position: absolute; top: -3px; right: -2px; min-width: 17px; height: 17px; border-radius: 50%; background: #e7f798; border: 1px solid #6b785a; color: #28361c; font: 700 10px/15px Arial,sans-serif; text-align: center; pointer-events: none; }
+
+/* Personal story and a small portrait album. */
+#portfolio-window[data-page="about"]:not(.expanded) { width: min(900px, 86vw); height: 82dvh; top: 48%; left: 50%; }
+.personal-about { background: #fcfaf6; color: #2e302d; padding: 32px; }
+.personal-location { font-size: 11px; color: #77796e; letter-spacing: .5px; }
+.personal-intro h2 { font-size: 46px; line-height: 1.1; letter-spacing: -1.8px; margin: 15px 0; font-weight: 600; }
+.personal-lead { font-size: 20px; line-height: 1.45; color: #596050; margin-bottom: 28px; }
+.personal-photos { display: grid; grid-template-columns: 1.1fr .75fr .75fr; grid-template-rows: 190px 190px; gap: 10px; margin-bottom: 32px; }
+.personal-photos a { display: block; overflow: hidden; border-radius: 5px; min-width: 0; background: #e8e4da; }
+.personal-photos img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .25s ease; }
+.personal-photos a:hover img { transform: scale(1.025); }
+.photo-casual { grid-row: span 2; }
+.photo-casual img { object-position: 50% 34%; }
+.photo-profile { grid-column: span 2; }
+.photo-profile img { object-position: 50% 35%; }
+.photo-navy img { object-position: 50% 45%; }
+.photo-studio img { object-position: 50% 40%; }
+.personal-story { max-width: 640px; margin: auto; }
+.personal-story p { font-size: 15px; line-height: 1.8; color: #555b51; margin: 0 0 21px; }
+.personal-story h3 { font-size: 23px; font-weight: 500; letter-spacing: -.45px; line-height: 1.3; margin: 32px 0 14px; }
+.personal-story strong { color: #353d30; font-weight: 600; }
+.personal-story .personal-signoff { border-top: 1px solid #deded2; margin-top: 30px; padding-top: 24px; color: #555e49; }
+.personal-signoff span { display: inline-block; margin-top: 14px; font: italic 32px Georgia,serif; color: #3f4e32; }
+.personal-links { display: flex; gap: 14px 24px; flex-wrap: wrap; border-top: 1px solid #deded2; padding-top: 16px; }
+.personal-links button,.personal-links a { color: #415333; background: transparent; padding: 10px 0; font-size: 12px; text-decoration: none; border-bottom: 1px solid #bdc5b4; min-height: 42px; }
+@media(max-width:809px) {
+ #portfolio-window[data-page="about"]:not(.expanded) { width:94vw; height:80dvh; top:48%; }
+ #portfolio-window[data-page="about"] .window-sidebar { display:none; }
+ .personal-about { padding: 24px 18px; }
+ .personal-intro h2 { font-size:37px; margin:12px 0; }
+ .personal-lead { font-size:17px; margin-bottom:22px; }
+ .personal-photos { grid-template-rows:145px 145px; gap:7px; }
+ .personal-story p { font-size:14px; line-height:1.75; }
+ .personal-story h3 { font-size:22px; }
+}
